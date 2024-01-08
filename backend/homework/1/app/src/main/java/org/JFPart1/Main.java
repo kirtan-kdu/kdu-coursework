@@ -54,6 +54,9 @@ public class Main {
                         int id = checkNumber(sc.nextLine());
                         Student s = studentRepository.getStudent(id);
                         if(s == null)loggingClass.studentNotFound(id);
+                        else {
+                            System.out.println("Id: " + s.getId() + ", Name: " + s.getName() + ", Age: " + s.getAge() + ", Grade: " + s.getGrade());
+                        }
                     }
                     else {
                         System.out.print("Enter name: ");
