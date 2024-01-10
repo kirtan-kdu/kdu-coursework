@@ -1,6 +1,7 @@
 package kdu.ques2;
 
 
+import kdu.ConsoleLogger;
 import kdu.ques2.InsurencePlan.PlatinumPlan;
 
 public class Main {
@@ -11,8 +12,8 @@ public class Main {
 
         double[] payments = Billing.computePaymentAmount(patient, 1000.0);
 
-        System.out.println(payments[0]);
-        System.out.println(payments[1]);
+        ConsoleLogger.infoMethod(""+payments[0]);
+        ConsoleLogger.infoMethod(""+payments[1]);
 
     }
 }

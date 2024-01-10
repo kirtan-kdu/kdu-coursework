@@ -1,5 +1,6 @@
 package kdu.ques4;
 
+import kdu.ConsoleLogger;
 import kdu.ques4.InsurencePlan.PlatinumPlan;
 
 public class Main {
@@ -11,6 +12,6 @@ public class Main {
         insurancePlan.setOfferedBy(insuranceBrand);
         staff.setInsurancePlan(insurancePlan);
 
-        System.out.println(insurancePlan.computeMonthlyPremium(5000, 56, true));
+        ConsoleLogger.infoMethod(""+insurancePlan.computeMonthlyPremium(5000, 56, true));
     }
 }
