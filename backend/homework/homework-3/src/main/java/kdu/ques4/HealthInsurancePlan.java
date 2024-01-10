@@ -31,10 +31,4 @@ public abstract class HealthInsurancePlan {
         this.coverage = coverage;
     }
 
-//    public InsuranceBrand getOfferedBy() {
-//        return offeredBy;
-//    }
-//    public void setOfferedBy(InsuranceBrand offeredBy) {
-//        this.offeredBy = offeredBy;
-//    }
 }
