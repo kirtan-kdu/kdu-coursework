@@ -1,0 +1,10 @@
+package kdu.ques2.InsurencePlan;
+
+import kdu.ques2.HealthInsurancePlan;
+
+public class SilverPlan extends HealthInsurancePlan {
+    public SilverPlan(){
+        setCoverage(0.7);
+        setDiscount(30.0);
+    }
+}
