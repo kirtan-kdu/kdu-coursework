@@ -1,9 +1,9 @@
 package kdu.quesfour;
 
-import kdu.quesfour.InsurencePlan.BronzePlan;
-import kdu.quesfour.InsurencePlan.GoldPlan;
-import kdu.quesfour.InsurencePlan.PlatinumPlan;
-import kdu.quesfour.InsurencePlan.SilverPlan;
+import kdu.quesfour.insurenceplan.BronzePlan;
+import kdu.quesfour.insurenceplan.GoldPlan;
+import kdu.quesfour.insurenceplan.PlatinumPlan;
+import kdu.quesfour.insurenceplan.SilverPlan;
 
 public class BlueCrossBlueShield implements InsuranceBrand {
 

@@ -1,7 +1,7 @@
 package kdu.quesfour;
 
 import kdu.ConsoleLogger;
-import kdu.quesfour.InsurencePlan.PlatinumPlan;
+import kdu.quesfour.insurenceplan.PlatinumPlan;
 
 public class Main {
     public static void main(String[] args){

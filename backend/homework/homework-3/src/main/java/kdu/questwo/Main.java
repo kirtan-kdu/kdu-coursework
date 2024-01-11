@@ -2,7 +2,7 @@ package kdu.questwo;
 
 
 import kdu.ConsoleLogger;
-import kdu.questwo.InsurencePlan.PlatinumPlan;
+import kdu.questwo.insurenceplan.PlatinumPlan;
 
 public class Main {
     public static void main(String[] args) {

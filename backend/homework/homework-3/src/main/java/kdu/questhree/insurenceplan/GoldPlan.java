@@ -1,4 +1,4 @@
-package kdu.questhree.InsurencePlan;
+package kdu.questhree.insurenceplan;
 
 import kdu.questhree.HealthInsurancePlan;
 

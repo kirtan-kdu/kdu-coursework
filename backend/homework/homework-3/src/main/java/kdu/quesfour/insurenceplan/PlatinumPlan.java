@@ -1,4 +1,4 @@
-package kdu.quesfour.InsurencePlan;
+package kdu.quesfour.insurenceplan;
 
 import kdu.quesfour.HealthInsurancePlan;
 
