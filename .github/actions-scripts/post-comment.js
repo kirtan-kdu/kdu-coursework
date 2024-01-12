@@ -2,7 +2,11 @@ const axios = require("axios");
 
 // log all the env variables
 console.log(
+<<<<<<< HEAD
   `PERSONAL_ACCESS_TOKEN_GITHUB: ${process.env.PERSONAL_ACCESS_TOKEN_GITHUB}`
+=======
+  `PERSONAL_ACCESS_TOKEN_GITHUB: ${process.env.PERSONAL_ACCESS_TOKEN_GITHUB}`
+>>>>>>> e598e992f4f7c5b96118b8129b5d181d3785434e
 );
 console.log(`SONAR_TOKEN: ${process.env.SONAR_TOKEN}`);
 console.log(`SONAR_HOST_URL: ${process.env.SONAR_HOST_URL}`);
@@ -18,6 +22,7 @@ const measuresEndpoint = `${sonarqubeURL}/measures/search`;
 // SonarQube project and metrics details
 const projectKey = process.env.SONAR_PROJECT_KEY;
 const metricKeys = [
+<<<<<<< HEAD
   "alert_status",
   "bugs",
   "code_smells",
@@ -25,6 +30,15 @@ const metricKeys = [
   "reliability_rating",
   "security_rating",
   // Add more metric keys as needed
+=======
+  "alert_status",
+  "bugs",
+  "code_smells",
+  "vulnerabilities",
+  "reliability_rating",
+  "security_rating",
+  // Add more metric keys as needed
+>>>>>>> e598e992f4f7c5b96118b8129b5d181d3785434e
 ];
 
 // SonarQube authentication token
@@ -40,6 +54,7 @@ const gitHubAccessToken = process.env.PERSONAL_ACCESS_TOKEN_GITHUB;
 
 // Function to create a comment with a table of metrics on a GitHub issue
 async function createCommentWithMetricsTable(metrics) {
+<<<<<<< HEAD
   // format metrics as a table
   const tableHeader = "| Metric | Value |\n| ------ | ----- |";
   const tableRows = metrics
@@ -48,6 +63,16 @@ async function createCommentWithMetricsTable(metrics) {
         `| ${metric.key} | ${getMetricValue(metric.key, metric.value)} |`
     )
     .join("\n");
+=======
+  // format metrics as a table
+  const tableHeader = "| Metric | Value |\n| ------ | ----- |";
+  const tableRows = metrics
+    .map(
+      (metric) =>
+        `| ${metric.key} | ${getMetricValue(metric.key, metric.value)} |`
+    )
+    .join("\n");
+>>>>>>> e598e992f4f7c5b96118b8129b5d181d3785434e
 
   const commentBody = `${tableHeader}\n${tableRows}`;
 
@@ -147,6 +172,76 @@ function getMetricValue(key, value) {
       break;
   }
   return returnValue;
+}
+
+function getMetricValue(key, value) {
+  let returnValue = value;
+  switch (key) {
+    case `reliability_rating`:
+      switch (value + "") {
+        case "1.0":
+          returnValue = "A (0 Bugs)";
+          break;
+        case "2.0":
+          returnValue = "B (at least 1 Minor Bug)";
+          break;
+        case "3.0":
+          returnValue = "C (at least 1 Major Bug)";
+          break;
+        case "4.0":
+          returnValue = "D (at least 1 Critical Bug)";
+          break;
+        case "5.0":
+          returnValue = "E (at least 1 Blocker Bug)";
+          break;
+
+        default:
+          break;
+      }
+      returnValue = returnValue + "<br/>Note: A being best, E being worst";
+      break;
+    case `security_rating`:
+      switch (value + "") {
+        case "1.0":
+          returnValue = "A (0 Vulnerabilities)";
+          break;
+        case "2.0":
+          returnValue = "B (at least 1 Minor Vulnerability)";
+          break;
+        case "3.0":
+          returnValue = "C (at least 1 Major Vulnerability)";
+          break;
+        case "4.0":
+          returnValue = "D (at least 1 Critical Vulnerability)";
+          break;
+        case "5.0":
+          returnValue = "E (at least 1 Blocker Vulnerability)";
+          break;
+
+        default:
+          break;
+      }
+      returnValue = returnValue + "<br/>Note: A being best, E being worst";
+      break;
+    case `alert_status`:
+      switch (value) {
+        case "OK":
+          returnValue = `<b>:white_check_mark: ${value}</b>`;
+          break;
+        case "ERROR":
+          returnValue = `<b>:x: ${value}</b>`;
+          break;
+
+        default:
+          returnValue = `<b>:warning: ${value}</b>`;
+          break;
+      }
+      break;
+
+    default:
+      break;
+  }
+  return returnValue;
 }
 
 // Function to fetch metrics data from SonarQube API
