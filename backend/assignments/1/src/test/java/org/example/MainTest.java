@@ -1,9 +1,11 @@
 package org.example;
 
+import cryptotradingplatform.Coin;
+import cryptotradingplatform.ExecuteTransaction;
+import cryptotradingplatform.Main;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -22,10 +24,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MainTest {
 
-    private static Map<String, Coins> coinNameMap;
-    private static Map<String, Coins> coinCodeMap;
-    private static Coins coinOne;
-    private static final List<Coins> coins = new ArrayList<>();
+    private static Map<String, Coin> coinNameMap;
+    private static Map<String, Coin> coinCodeMap;
+    private static Coin coinOne;
+    private static final List<Coin> coins = new ArrayList<>();
 
     /**
      * Sets up test data before running any tests.
@@ -35,10 +37,10 @@ public class MainTest {
         coinNameMap = new HashMap<>();
         coinCodeMap = new HashMap<>();
 
-        coinOne = new Coins(1, "Bitcoin", "BTC", 10000.0, 100L);
-        Coins coinTwo = new Coins(2, "Ethereum", "ETH", 5000.0, 50L);
-        Coins coinThree = new Coins(3, "Cardano", "ADA", 2000.0, 30L);
-        Coins coinFour = new Coins(3, "Solana", "SOL", 1000.0, 150L);
+        coinOne = new Coin(1, "Bitcoin", "BTC", 10000.0, 100L);
+        Coin coinTwo = new Coin(2, "Ethereum", "ETH", 5000.0, 50L);
+        Coin coinThree = new Coin(3, "Cardano", "ADA", 2000.0, 30L);
+        Coin coinFour = new Coin(3, "Solana", "SOL", 1000.0, 150L);
 
         coins.add(coinOne);
         coins.add(coinTwo);
@@ -90,6 +92,7 @@ public class MainTest {
         expectedTraders.add(new String[]{"4", "Donette", "Foller", "513-570-1893", "0xbe3887c02d3d33e16ba49b3607c50e3a"});
         expectedTraders.add(new String[]{"5", "Simona", "Morasca", "419-503-2484", "0xbd670dbca4260f5f1403b555bbe2dd9e"});
         ArrayList<String[]> actualTraders = Main.parseCSV(traderCsvPath);
+        System.out.println(traderCsvPath);
 
         Assertions.assertEquals(expectedTraders.size(), actualTraders.size());
 
@@ -135,6 +138,7 @@ public class MainTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(latch.getCount() + " : latch count");
         assertEquals(0, latch.getCount());
     }
 

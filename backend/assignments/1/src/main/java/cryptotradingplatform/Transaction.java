@@ -1,3 +1,5 @@
+package cryptotradingplatform;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Transaction {
