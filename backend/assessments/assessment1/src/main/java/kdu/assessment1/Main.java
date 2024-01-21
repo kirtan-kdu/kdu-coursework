@@ -6,8 +6,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
 import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -54,7 +52,6 @@ public class Main {
     }
 
     private static void GenerateAndWriteCSV(ArrayList<String> teams){
-        HashMap<String, List<Integer>> map = new HashMap<>();
 
         ArrayList<String[]> fixtures = new ArrayList<>();
         int n =teams.size();
@@ -139,9 +136,7 @@ public class Main {
                 case 1:
                     ConsoleLogger.infoMethod("Enter the team name: ");
                     team = sc.nextLine();
-                    players.stream().filter(player -> {
-                        return player.getTeam().equals(team) && player.getWickets()>=40;
-                    }).forEach(player -> ConsoleLogger.infoMethod(player.getName()));
+                    players.stream().filter(player -> player.getTeam().equals(team) && player.getWickets()>=40).forEach(player -> ConsoleLogger.infoMethod(player.getName()));
                     break;
                 case 2:
                     ConsoleLogger.infoMethod("Enter the team name: ");
@@ -151,8 +146,8 @@ public class Main {
                     ConsoleLogger.infoMethod("Highest wicket taker from team: " + team + " is " + highestWicketTaker.get().getName() + " and highest runs scorer is " + highestRunsScorer.get().getName());
                     break;
                 case 3:
-                    List<Player> topWickettakers = players.stream().sorted(Comparator.comparing(Player::getWickets).reversed()).limit(3).collect(Collectors.toList());
-                    List<Player> topRunScorer = players.stream().sorted(Comparator.comparing(Player::getRuns).reversed()).limit(3).collect(Collectors.toList());
+                    List<Player> topWickettakers = players.stream().sorted(Comparator.comparing(Player::getWickets).reversed()).limit(3).toList();
+                    List<Player> topRunScorer = players.stream().sorted(Comparator.comparing(Player::getRuns).reversed()).limit(3).toList();
                     ConsoleLogger.infoMethod("Top wicket takers are as below:");
                     topWickettakers.forEach(player -> ConsoleLogger.infoMethod(player.getName()));
                     ConsoleLogger.infoMethod("Top run scorers are as below:");
