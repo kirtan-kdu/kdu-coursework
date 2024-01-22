@@ -12,9 +12,10 @@ import java.util.Random;
 @ComponentScan(basePackages = "kdu.homework6.entities")
 public class SpeakerService {
 
+    Random random = new Random();
+
     @Bean
     Speaker generateSpeaker(){
-        Random random = new Random();
         int speakerCompany = random.nextInt(2) + 1;
         Speaker speaker = new Speaker();
         speaker.setSpeakerCompany(speakerCompany==1?SpeakerCompany.SONY:SpeakerCompany.BOSE);

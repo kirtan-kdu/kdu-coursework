@@ -13,16 +13,16 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ConsoleLogger.warnMethod("Hello and welcome!");
 
         AnnotationConfigApplicationContext vehicleContext = new AnnotationConfigApplicationContext(VehicleService.class);
 
         List<Vehicle> vehicleList = (List<Vehicle>) vehicleContext.getBean("vehicleGenerator");
 
-        System.out.println("Here is the list of generated vehicles,");
-        vehicleList.forEach(vehicle -> System.out.println(vehicle.toString()));
+        ConsoleLogger.warnMethod("Here is the list of generated vehicles,");
+        vehicleList.forEach(vehicle -> ConsoleLogger.infoMethod(vehicle.toString()));
 
-        Optional<Vehicle> mostExpenciveVehicle = (Optional<Vehicle>) vehicleContext.getBean("mostExpenciveVehicle", vehicleList);
-        System.out.println("\n\nMost expensice vehicle is: " + mostExpenciveVehicle.get().toString());
+        Vehicle mostExpenciveVehicle = (Vehicle) vehicleContext.getBean("mostExpenciveVehicle", vehicleList);
+        ConsoleLogger.warnMethod("\n\nMost expensice vehicle is: " + mostExpenciveVehicle.getPriceTag());
     }
 }

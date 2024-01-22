@@ -7,10 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @ComponentScan(basePackages = { "kdu.homework6.entities", "kdu.homework6.services"})
@@ -22,11 +19,11 @@ public class VehicleService {
     @Autowired
     private SpeakerService speakerService;
 
+    Random random = new Random();
+
 
     @Bean
     public Vehicle generateVehicle(){
-        Random random = new Random();
-
         Vehicle vehicle = new Vehicle();
         vehicle.setSpeaker(speakerService.generateSpeaker());
         vehicle.setTyre(tyreService.generateTyre());
@@ -46,6 +43,6 @@ public class VehicleService {
 
     @Bean(name = "mostExpenciveVehicle")
     public Vehicle mostExpecive(List<Vehicle> vehicleList){
-        return vehicleList.stream().reduce((vehicle1,vehicle2) -> vehicle1.getPriceTag()>vehicle2.getPriceTag()?vehicle1:vehicle2);
+        return vehicleList.stream().max(Comparator.comparing(Vehicle::getPriceTag)).get();
     }
 }
