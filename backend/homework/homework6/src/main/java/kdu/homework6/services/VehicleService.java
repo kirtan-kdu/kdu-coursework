@@ -43,6 +43,6 @@ public class VehicleService {
 
     @Bean(name = "mostExpenciveVehicle")
     public Vehicle mostExpecive(List<Vehicle> vehicleList){
-        return vehicleList.stream().max(Comparator.comparing(Vehicle::getPriceTag)).get();
+        return vehicleList.stream().max(Comparator.comparing(Vehicle::getPriceTag)).orElse(new Vehicle());
     }
 }
