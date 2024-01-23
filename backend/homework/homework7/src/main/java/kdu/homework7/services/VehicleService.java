@@ -3,6 +3,7 @@ package kdu.homework7.services;
 
 import kdu.homework7.data.VehiclesInventory;
 import kdu.homework7.entities.Vehicle;
+import kdu.homework7.utils.RandomNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,15 +27,13 @@ public class VehicleService implements IVehicleService{
     @Autowired
     public SpeakerService speakerService;
 
-    Random random = new Random();
-
 
     @Bean
     public Vehicle generateVehicle(){
         Vehicle vehicle = new Vehicle();
         vehicle.setSpeaker(speakerService.generateSpeaker());
         vehicle.setTyre(tyreService.generateTyre());
-        vehicle.setPriceTag(random.nextInt(10_000_000) + 100_000);
+        vehicle.setPriceTag(RandomNumber.generate(10_000_000) + 100_000);
         return vehicle;
     }
 
