@@ -14,10 +14,9 @@ import java.util.List;
 @Service
 public class TataService extends VehicleService {
 
-
     @Autowired
-    @Qualifier("TataInventory")
-    public VehiclesInventory vehiclesInventory;
+    @Qualifier("tataInventory")
+    public VehiclesInventory tataInventory;
 
     @Bean
     @Override
@@ -29,6 +28,7 @@ public class TataService extends VehicleService {
         return vehicle;
     }
 
+    @Override
     @PostConstruct
     @Bean(name = "vehicleGenerator")
     public void generateVehicleList(){
@@ -36,8 +36,7 @@ public class TataService extends VehicleService {
         for(int i=1;i<=20;i++){
             vehicles.add(generateVehicle());
         }
-        System.out.println("Called");
-        vehiclesInventory.setListOfAllVehicles(vehicles);
+        tataInventory.setListOfAllVehicles(vehicles);
     }
 
 

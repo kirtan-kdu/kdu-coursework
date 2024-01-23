@@ -15,8 +15,8 @@ import java.util.List;
 public class TeslaService extends VehicleService {
 
     @Autowired
-    @Qualifier("TeslaInventory")
-    public VehiclesInventory vehiclesInventory;
+    @Qualifier("teslaInventory")
+    public VehiclesInventory teslaInventory;
 
     @Bean
     @Override
@@ -28,6 +28,7 @@ public class TeslaService extends VehicleService {
         return vehicle;
     }
 
+    @Override
     @PostConstruct
     @Bean(name = "vehicleGenerator")
     public void generateVehicleList(){
@@ -35,8 +36,7 @@ public class TeslaService extends VehicleService {
         for(int i=1;i<=20;i++){
             vehicles.add(generateVehicle());
         }
-        System.out.println("Called");
-        vehiclesInventory.setListOfAllVehicles(vehicles);
+        teslaInventory.setListOfAllVehicles(vehicles);
     }
 
 }

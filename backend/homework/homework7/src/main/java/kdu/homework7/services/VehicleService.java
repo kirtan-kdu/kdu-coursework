@@ -4,7 +4,6 @@ package kdu.homework7.services;
 import kdu.homework7.data.VehiclesInventory;
 import kdu.homework7.entities.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -46,7 +45,6 @@ public class VehicleService implements IVehicleService{
         for(int i=1;i<=20;i++){
             vehicles.add(generateVehicle());
         }
-        System.out.println("Called");
         vehiclesInventory.setListOfAllVehicles(vehicles);
     }
 

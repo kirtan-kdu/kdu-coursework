@@ -1,21 +1,10 @@
 package kdu.homework7.entities;
 
-import kdu.homework7.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 
 @Component
 public class Vehicle {
-
-
-    @Autowired
-    private VehicleService vehicleService;
-
-
 
     @Override
     public String toString(){
