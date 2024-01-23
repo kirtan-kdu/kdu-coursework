@@ -1,7 +1,7 @@
-package kdu.homework6.services;
+package kdu.homework7.services;
 
-import kdu.homework6.entities.Speaker;
-import kdu.homework6.entities.SpeakerCompany;
+import kdu.homework7.entities.Speaker;
+import kdu.homework7.entities.SpeakerCompany;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
-@ComponentScan(basePackages = "kdu.homework6.entities")
+@ComponentScan(basePackages = "kdu.homework7.entities")
 public class SpeakerService {
 
     Random random = new Random();

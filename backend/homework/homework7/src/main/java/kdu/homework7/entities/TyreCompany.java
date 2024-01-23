@@ -1,4 +1,4 @@
-package kdu.homework6.entities;
+package kdu.homework7.entities;
 
 
 public enum TyreCompany {

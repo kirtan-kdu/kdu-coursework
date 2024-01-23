@@ -1,7 +1,9 @@
-package kdu.homework6.entities;
+package kdu.homework7.entities;
 
-import kdu.homework6.services.VehicleService;
+import kdu.homework7.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,12 +15,6 @@ public class Vehicle {
     @Autowired
     private VehicleService vehicleService;
 
-
-
-    @PostConstruct
-    private void postConstruct(){
-        vehicleService.generateVehicleList();
-    }
 
 
     @Override
