@@ -29,6 +29,11 @@ public class InventoryController {
     @Autowired
     private TeslaService teslaService;
 
+    /**
+     * takes string of company name as argument and returns appropriate inventory
+     * @param company
+     * @return
+     */
     private VehicleService getCorrectService(String company){
         if(company.equalsIgnoreCase("tesla"))return teslaService;
         else if(company.equalsIgnoreCase("tata"))return tataService;
@@ -46,7 +51,12 @@ public class InventoryController {
     }
 
 
-
+    /**
+     * takes company name in arg and adds vehicle object to its inventory
+     * @param company whether it is "Tesla" or "Tata"
+     * @param vehicle object which needs to be added
+     * @return
+     */
     @PostMapping("/{company}/addvehicle")
     public ResponseEntity<ResVehicleDTO> addVehicle(@PathVariable String company,@Valid @RequestBody Vehicle vehicle){
 
@@ -57,6 +67,12 @@ public class InventoryController {
         return new ResponseEntity<>(vehicleDTO, HttpStatus.CREATED);
     }
 
+    /**
+     * Fetches vehicle with its id as index from path variable
+     * @param company
+     * @param id
+     * @return
+     */
     @GetMapping("/{company}/getvehicle/{id}")
     public ResponseEntity<ResVehicleDTO> getVehicle(@PathVariable String company,@PathVariable int id){
         ResVehicleDTO vehicle = getCorrectService(company).getVehicle(id);
@@ -66,6 +82,12 @@ public class InventoryController {
         return new ResponseEntity<>(vehicle,HttpStatus.OK);
     }
 
+    /**
+     * takes old vehicle id and new vehicle object which are wrapped in updateVehicleDTO
+     * @param company
+     * @param updateVehicleDTO
+     * @return
+     */
     @PutMapping("/{company}/updatevehicle")
     public ResponseEntity<ResMessageDTO> updatevehicle(@PathVariable String company, @RequestBody UpdateVehicleDTO updateVehicleDTO){
         ResMessageDTO messageDTO = getCorrectService(company).updateVehicle(updateVehicleDTO);
@@ -76,6 +98,12 @@ public class InventoryController {
     }
 
 
+    /**
+     * deletes vehicle from appropriate inventory using its id
+     * @param company
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{company}/deletevehicle/{id}")
     public ResponseEntity<ResMessageDTO> delateVehicle(@PathVariable String company, @PathVariable int id){
         ResMessageDTO messageDTO = getCorrectService(company).deleteVehicle(new VehicleIdDTO(id));
@@ -85,6 +113,12 @@ public class InventoryController {
         return new ResponseEntity<>(messageDTO, HttpStatus.OK);
     }
 
+    /**
+     * Calls most or least methods as per the path variables
+     * @param company
+     * @param op can be of type "min" or "max"
+     * @return
+     */
     @GetMapping("/{company}/{op}")
     public ResponseEntity<ResVehicleDTO> performOp(@PathVariable String company, @PathVariable String op){
         ResVehicleDTO vehicle = getCorrectService(company).performOperation(new VehicleOperatoinDTO(op));
