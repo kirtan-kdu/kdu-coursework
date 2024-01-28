@@ -1,4 +1,4 @@
-name: Assignment 1 test run
+name: Assignment 2 test run
 
 on:
   push:
@@ -29,4 +29,4 @@ jobs:
 
 
       - name: Install and Run tests
-        run: cd ./backend/assignments/1 && mvn install
+        run: cd ./backend/assignments/2 && mvn install
