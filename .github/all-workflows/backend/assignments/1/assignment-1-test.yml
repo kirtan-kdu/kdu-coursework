@@ -15,6 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Redis
+        run: |
+          sudo apt-get install redis-server
+          redis-server --daemonize yes
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
