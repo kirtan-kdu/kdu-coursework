@@ -1,4 +1,4 @@
-name: Assignment 2 test run
+name: Assignment 1 test run
 
 on:
   push:
@@ -15,6 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Redis
+        run: |
+          sudo apt-get install redis-server
+          redis-server --daemonize yes
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -23,7 +28,7 @@ jobs:
           architecture: x64
 
       - name: Clean Maven workspace
-        run: cd ./backend/assignments/2 && mvn clean
+        run: cd ./backend/assignments/1 && mvn clean
 
       - name: Install and Run tests
-        run: cd ./backend/assignments/2 && mvn install
+        run: cd ./backend/assignments/1 && mvn install

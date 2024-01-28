@@ -17,6 +17,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
+
+      - name: Setup Redis
+        run: |
+          sudo apt-get install redis-server
+          redis-server --daemonize yes
+
       - name: Cache SonarQube packages
         uses: actions/cache@v1
         with:
