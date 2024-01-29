@@ -9,7 +9,6 @@ public final class APIConstants {
     public static final String API_KEY="ed48d89a74e3a54f84b161eaab00af27";
 
     public static final String GEO_CACHE = "geocoding";
-
     public static final String REV_CACHE = "reverse-geocoding";
 
 }
