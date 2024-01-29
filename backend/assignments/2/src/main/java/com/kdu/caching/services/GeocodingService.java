@@ -9,6 +9,7 @@ import com.kdu.caching.exceptions.custom.InvalidArgumentsException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +40,10 @@ public class GeocodingService {
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) throw new InvalidArgumentsException( new ErrorDTO("Unexpected code: " + response, HttpStatus.UNPROCESSABLE_ENTITY));
 
-            if (logger.isInfoEnabled())logger.info(new JSONObject(response.body().string()).getJSONArray("data").getJSONObject(0).toString());
+            JSONObject responseObject = new JSONObject(response.body().string());
+            if (logger.isInfoEnabled())logger.info(responseObject.getJSONArray("data").getJSONObject(0).toString());
 
-            return new JSONObject(response.body().string()).getJSONArray("data").getJSONObject(0);
+            return responseObject.getJSONArray("data").getJSONObject(0);
         } catch (Exception e) {
             throw new CustomException( new ErrorDTO("Invalid Coordinates", HttpStatus.BAD_REQUEST));
         }
@@ -64,10 +66,10 @@ public class GeocodingService {
 
         try (Response response = client.newCall(request).execute()){
             if (!response.isSuccessful()) throw new InvalidArgumentsException( new ErrorDTO("Unexpected code: " + response, HttpStatus.UNPROCESSABLE_ENTITY));
+            JSONObject responseObject = new JSONObject(response.body().string());
+            if(logger.isInfoEnabled())logger.info(responseObject.getJSONArray("data").getJSONObject(0).toString());
 
-            if(logger.isInfoEnabled())logger.info(new JSONObject(response.body().string()).getJSONArray("data").getJSONObject(0).toString());
-
-            return new JSONObject(response.body().string()).getJSONArray("data").getJSONObject(0);
+            return responseObject.getJSONArray("data").getJSONObject(0);
         } catch (Exception e) {
             throw new CustomException(new ErrorDTO("Invalid Address parameter", HttpStatus.BAD_REQUEST));
         }
