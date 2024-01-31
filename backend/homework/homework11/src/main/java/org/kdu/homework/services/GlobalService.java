@@ -40,13 +40,13 @@ public class GlobalService {
     public void addAllEntities(RequestGlobalDTO requestGlobalDTO){
 
         try {
-            UUID userId = userService.addUser(GlobalToEntity.GlobalToUser(requestGlobalDTO));
+            UUID userId = userService.addUser(GlobalToEntity.globalToUser(requestGlobalDTO));
             requestGlobalDTO.setUserId(userId);
-            UUID shiftTypeId = shiftTypeService.addShiftType(GlobalToEntity.GlobalToShiftType(requestGlobalDTO));
+            UUID shiftTypeId = shiftTypeService.addShiftType(GlobalToEntity.globalToShiftType(requestGlobalDTO));
             requestGlobalDTO.setShiftTypeId(shiftTypeId);
-            UUID shiftId = shiftService.addShift(GlobalToEntity.GlobalToShift(requestGlobalDTO));
+            UUID shiftId = shiftService.addShift(GlobalToEntity.globalToShift(requestGlobalDTO));
             requestGlobalDTO.setShiftId(shiftId);
-            shiftUserService.addShiftUser(GlobalToEntity.GlobalToShiftUser(requestGlobalDTO));
+            shiftUserService.addShiftUser(GlobalToEntity.globalToShiftUser(requestGlobalDTO));
             log.debug("Successfully added all entities in one go");
         }
         catch (Exception ex){
