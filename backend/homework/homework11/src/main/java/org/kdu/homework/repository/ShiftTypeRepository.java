@@ -21,7 +21,6 @@ public class ShiftTypeRepository {
 
     public UUID addShiftType(ShiftType shiftType) {
         UUID uuid = UUID.randomUUID();
-        System.out.println(shiftType);
         String sql = "INSERT INTO shift_types (id, uq_name, description, active, created_at, created_by, updated_at, updated_by, time_zone, tenant_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, uuid, shiftType.getUniqueName(), shiftType.getDescription(), shiftType.isActive(), new Timestamp(System.currentTimeMillis()), shiftType.getCreatedBy(), new Timestamp(System.currentTimeMillis()), shiftType.getUpdatedBy(), shiftType.getTimeZone(), shiftType.getTenantId());
         return uuid;

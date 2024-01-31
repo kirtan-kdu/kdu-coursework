@@ -8,7 +8,11 @@ import org.kdu.homework.entities.User;
 
 public class GlobalToEntity {
 
-    public static User GlobalToUser(RequestGlobalDTO globalDTO){
+    private GlobalToEntity(){
+
+    }
+
+    public static User globalToUser(RequestGlobalDTO globalDTO){
         User user = new User();
         user.setUserName(globalDTO.getUserName());
         user.setTenantId(globalDTO.getTenantId());
@@ -18,7 +22,7 @@ public class GlobalToEntity {
         return user;
     }
 
-    public static ShiftUser GlobalToShiftUser(RequestGlobalDTO globalDTO){
+    public static ShiftUser globalToShiftUser(RequestGlobalDTO globalDTO){
         ShiftUser shiftUser = new ShiftUser();
         shiftUser.setCreatedBy(globalDTO.getCreatedBy());
         shiftUser.setTenantId(globalDTO.getTenantId());
@@ -27,7 +31,7 @@ public class GlobalToEntity {
         return shiftUser;
     }
 
-    public static Shift GlobalToShift(RequestGlobalDTO globalDTO){
+    public static Shift globalToShift(RequestGlobalDTO globalDTO){
         Shift shift = new Shift();
         shift.setTenantId(globalDTO.getTenantId());
         shift.setCreatedBy(globalDTO.getCreatedBy());
@@ -41,7 +45,7 @@ public class GlobalToEntity {
         return shift;
     }
 
-    public static ShiftType GlobalToShiftType(RequestGlobalDTO globalDTO){
+    public static ShiftType globalToShiftType(RequestGlobalDTO globalDTO){
         ShiftType shiftType = new ShiftType();
         shiftType.setUniqueName(globalDTO.getShiftTypeName());
         shiftType.setCreatedBy(globalDTO.getCreatedBy());

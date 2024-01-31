@@ -24,7 +24,6 @@ public class ShiftTypeController {
 
     @PostMapping()
     public ResponseEntity<String> addShift(@RequestBody ShiftType shiftType) {
-        System.out.println(shiftType);
         shiftTypeService.addShiftType(shiftType);
         return ResponseEntity.ok("Shift-type saved successfully");
     }
