@@ -1,4 +1,4 @@
-package org.kdu.homework.controllers.saveEntities;
+package org.kdu.homework.controllers.saveentities;
 
 import org.kdu.homework.dto.request.RequestTenantDTO;
 import org.kdu.homework.entities.ShiftType;
@@ -21,7 +21,6 @@ public class ShiftTypeController {
 
     @PostMapping()
     public ResponseEntity<String> addShift(@RequestBody ShiftType shiftType) {
-        System.out.println(shiftType);
         shiftTypeService.addShiftType(shiftType);
         return ResponseEntity.ok("Shift-type saved successfully");
     }

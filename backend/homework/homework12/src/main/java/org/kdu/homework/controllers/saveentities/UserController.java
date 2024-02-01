@@ -1,4 +1,4 @@
-package org.kdu.homework.controllers.saveEntities;
+package org.kdu.homework.controllers.saveentities;
 
 import org.kdu.homework.dto.request.RequestTenantDTO;
 import org.kdu.homework.entities.User;

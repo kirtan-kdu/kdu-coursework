@@ -1,11 +1,9 @@
 package org.kdu.homework.repository;
 
-import jakarta.persistence.EntityResult;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.kdu.homework.entities.Tenant;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.UUID;
 
 @Repository
