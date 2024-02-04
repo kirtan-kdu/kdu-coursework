@@ -3,6 +3,7 @@ package com.kdu.smarthome.controller;
 import com.kdu.smarthome.utility.TestSuiteDataManager;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -22,7 +23,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void deviceRegisterWithValidRequestData(MockMvc mockMvc, String... args) {
+    public static MvcResult deviceRegisterWithValidRequestData(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String deviceName = (args.length > 1) ? args[1].trim() : "device1";
@@ -34,10 +35,10 @@ public class DeviceControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get(username);
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
                             .content(buildDeviceRegistrationRequest(kickstoneId, deviceName, devicePassword))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andDo(result -> {
@@ -59,7 +60,7 @@ public class DeviceControllerTest {
                         TestSuiteDataManager.writeData("registeredDevices", existingData);
 
                         System.out.println("deviceRegisterWithValidRequestData TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -74,7 +75,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void deviceRegisterWithInvalidCredentials(MockMvc mockMvc, String... args) {
+    public static MvcResult deviceRegisterWithInvalidCredentials(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String deviceName = (args.length > 1) ? args[1].trim() : "device1";
@@ -86,7 +87,7 @@ public class DeviceControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get(username);
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
                             .content(buildDeviceRegistrationRequest(kickstoneId, deviceName, devicePassword))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
@@ -94,7 +95,7 @@ public class DeviceControllerTest {
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
                     .andDo(result -> {
                         System.out.println("deviceRegisterWithInvalidCredentials TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -109,7 +110,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void registerUnavailableDevice(MockMvc mockMvc, String... args) {
+    public static MvcResult registerUnavailableDevice(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String deviceName = (args.length > 1) ? args[1].trim() : "device2";
@@ -121,15 +122,15 @@ public class DeviceControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get(username);
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
                             .content(buildDeviceRegistrationRequest(kickstoneId, deviceName, devicePassword))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("registerUnavailableDevice TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("registerUnavailableDevice TEST FAILED " + ex.getLocalizedMessage()));
@@ -143,7 +144,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void deviceRegisterByNonAdmin(MockMvc mockMvc, String... args) {
+    public static MvcResult deviceRegisterByNonAdmin(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String deviceName = (args.length > 1) ? args[1].trim() : "device1";
@@ -155,7 +156,7 @@ public class DeviceControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get(username);
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/register")
                             .content(buildDeviceRegistrationRequest(kickstoneId, deviceName, devicePassword))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
@@ -163,7 +164,7 @@ public class DeviceControllerTest {
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
                     .andDo(result -> {
                         System.out.println("deviceRegisterByNonAdmin TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -178,7 +179,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void addDeviceWithValidRequestData(MockMvc mockMvc, String... args) {
+    public static MvcResult addDeviceWithValidRequestData(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String username = (args.length > 1) ? args[1].trim() : "user1";
@@ -197,10 +198,10 @@ public class DeviceControllerTest {
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
             String roomId = (String) (rooms.get(0)).get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
                             .content(buildAddDeviceRequest(houseId, roomId, kickstoneId))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andDo(result -> {
@@ -229,7 +230,7 @@ public class DeviceControllerTest {
                         TestSuiteDataManager.writeData("registeredDevices", existingData);
 
                         System.out.println("addDeviceWithValidRequestData TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -244,7 +245,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void addDeviceToInvalidHouse(MockMvc mockMvc, String... args) {
+    public static MvcResult addDeviceToInvalidHouse(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String username = (args.length > 1) ? args[1].trim() : "user1";
@@ -260,15 +261,15 @@ public class DeviceControllerTest {
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
             String roomId = (String) (rooms.get(0)).get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
                             .content(buildAddDeviceRequest("invalidHouseId", roomId, kickstoneId))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("addDeviceToInvalidHouse TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -283,7 +284,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void addDeviceToInvalidRoom(MockMvc mockMvc, String... args) {
+    public static MvcResult addDeviceToInvalidRoom(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String username = (args.length > 1) ? args[1].trim() : "user1";
@@ -298,15 +299,15 @@ public class DeviceControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get(username);
             String houseId = houseData.get("id").toString();
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
                             .content(buildAddDeviceRequest(houseId, "invalidRoomId", kickstoneId))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("addDeviceToInvalidRoom TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -322,7 +323,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void addUnregisteredDevice(MockMvc mockMvc, String... args) {
+    public static MvcResult addUnregisteredDevice(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "222";
             String username = (args.length > 1) ? args[1].trim() : "user1";
@@ -344,15 +345,15 @@ public class DeviceControllerTest {
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
             String roomId = (String) (rooms.get(0)).get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
                             .content(buildAddDeviceRequest(houseId, roomId, kickstoneId))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("addUnregisteredDevice TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -367,7 +368,7 @@ public class DeviceControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void addUnavailableDevice(MockMvc mockMvc, String... args) {
+    public static MvcResult addUnavailableDevice(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "333";
             String username = (args.length > 1) ? args[1].trim() : "user1";
@@ -386,15 +387,15 @@ public class DeviceControllerTest {
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
             String roomId = (String) (rooms.get(0)).get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/device/add")
                             .content(buildAddDeviceRequest(houseId, roomId, kickstoneId))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("addUnavailableDevice TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();

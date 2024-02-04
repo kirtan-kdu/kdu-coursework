@@ -4,6 +4,7 @@ import com.kdu.smarthome.utility.TestSuiteDataManager;
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -22,16 +23,16 @@ public class RoomControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void addRoomWithInvalidAuth(MockMvc mockMvc) throws Exception {
+    public static MvcResult addRoomWithInvalidAuth(MockMvc mockMvc) throws Exception {
         try {
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/room")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/room")
                             .param("houseId", "testHouseId")
                             .content(buildAddRoomRequest("testRoom"))
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().is4xxClientError())
                     .andDo(result -> {
                         System.out.println("addRoomWithInvalidAuth TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("addRoomWithInvalidAuth TEST FAILED " + ex.getLocalizedMessage()));
@@ -45,7 +46,7 @@ public class RoomControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void addRoomByAdmin(MockMvc mockMvc) throws Exception {
+    public static MvcResult addRoomByAdmin(MockMvc mockMvc) throws Exception {
         try {
 
             // Read admin user token from testSuiteData
@@ -58,9 +59,9 @@ public class RoomControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get("user1");
             String houseId = houseData.get("id").toString();
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/room")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/room")
                             .param("houseId", houseId)
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .content(buildAddRoomRequest("room1"))
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -93,7 +94,7 @@ public class RoomControllerTest {
                         TestSuiteDataManager.writeData("registeredHouses", Map.of("user1", mutableHouseData));
 
                         System.out.println("addRoomByAdmin TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("addRoomByAdmin TEST FAILED " + ex.getLocalizedMessage()));
@@ -106,7 +107,7 @@ public class RoomControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void addRoomForInvalidHouse(MockMvc mockMvc) throws Exception {
+    public static MvcResult addRoomForInvalidHouse(MockMvc mockMvc) throws Exception {
         try {
 
             // Read admin user token from testSuiteData
@@ -115,15 +116,15 @@ public class RoomControllerTest {
             String userToken = (String) userData.get("token");
 
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/room")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/room")
                             .param("houseId", "invalidHouseId")
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .content(buildAddRoomRequest("room1"))
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("addRoomForInvalidHouse TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("addRoomForInvalidHouse TEST FAILED " + ex.getLocalizedMessage()));

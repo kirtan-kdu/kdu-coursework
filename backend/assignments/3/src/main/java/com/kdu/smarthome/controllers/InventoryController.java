@@ -1,24 +1,30 @@
-package com.kdu.smarthome.controller;
+package com.kdu.smarthome.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kdu.smarthome.dto.response.InventoryListResponseDTO;
+import com.kdu.smarthome.dto.response.InventoryResponseDTO;
+import com.kdu.smarthome.models.Inventory;
+import com.kdu.smarthome.services.InventoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ResponseMessage;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/inventory")
 public class InventoryController {
-    @Autowired
-    private InventoryService inventoryService;
+    private final InventoryService inventoryService;
+
+    public InventoryController(InventoryService inventoryService){
+        this.inventoryService = inventoryService;
+    }
     @GetMapping
-    public ResponseEntity<?> getInventoryItems() {
-        List<InventoryItemDTO> inventoryItems = inventoryService.getInventoryItems();
-        return ResponseEntity.ok(new InventoryResponse("Inventory items retrieved successfully", inventoryItems, HttpStatus.OK));
+    public ResponseEntity<InventoryListResponseDTO> getInventoryItems() {
+        List<Inventory> inventoryItems = inventoryService.getInventoryItems();
+        return ResponseEntity.ok(new InventoryListResponseDTO(inventoryItems.toString(), HttpStatus.OK));
     }
     @PostMapping
-    public ResponseEntity<?> addInventoryItem(@RequestBody InventoryItemDTO inventoryItemDTO) {
-        inventoryService.addInventoryItem(inventoryItemDTO);
-        return ResponseEntity.ok(new ResponseMessage("Inventory item added successfully"));
+    public ResponseEntity<InventoryResponseDTO> addInventoryItem(@RequestHeader(required = false) String jwtToken, @RequestBody Inventory inventory) {
+        return ResponseEntity.ok(inventoryService.addInventoryItem(inventory));
     }
 }

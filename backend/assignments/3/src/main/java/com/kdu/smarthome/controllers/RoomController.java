@@ -1,18 +1,21 @@
-package com.kdu.smarthome.controller;
+package com.kdu.smarthome.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kdu.smarthome.dto.response.RoomResponseDTO;
+import com.kdu.smarthome.services.RoomService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ResponseMessage;
+
 
 @RestController
 @RequestMapping("/api/v1/room")
 public class RoomController {
-    @Autowired
-    private RoomService roomService;
+    private final RoomService roomService;
+
+    public RoomController(RoomService roomService){
+        this.roomService = roomService;
+    }
     @PostMapping
-    public ResponseEntity<?> addRoomToHouse(@RequestParam int houseId, @RequestBody RoomDTO roomDTO) {
-        roomService.addRoomToHouse(houseId, roomDTO);
-        return ResponseEntity.ok(new ResponseMessage("Room added to house successfully"));
+    public ResponseEntity<RoomResponseDTO> addRoomToHouse(@RequestHeader(required = false) String jwtToken, @RequestParam String houseId, @RequestBody String roomName) {
+        return ResponseEntity.ok(roomService.addRoomToHouse(houseId, roomName));
     }
 }

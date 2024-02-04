@@ -5,15 +5,11 @@ import com.jayway.jsonpath.JsonPath;
 import org.hamcrest.Matchers;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.kdu.smarthome.utility.RequestBuilders.buildAddUserToHouseRequestJson;
 import static com.kdu.smarthome.utility.RequestBuilders.buildHouseRequestJson;
@@ -28,7 +24,7 @@ public class HouseControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void displayAllHouses(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult displayAllHouses(MockMvc mockMvc, String... args) throws Exception {
         try {
             String username = (args.length > 0) ? args[0].trim() : "user1";
             String expectedHouseName = (args.length > 1) ? args[1].trim() : "house1";
@@ -41,15 +37,15 @@ public class HouseControllerTest {
             String userToken = (String) userData.get("token");
 
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
-                            .header("Authorization", "Bearer " + userToken)
+            return mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
+                            .header("JWTToken",  userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.jsonPath("$.houses").value(Matchers.containsString(expectedHouseName)))
                     .andExpect(MockMvcResultMatchers.jsonPath("$.houses").value(Matchers.containsString(expectedAddress)))
                     .andDo(result -> {
                         System.out.println("displayAllHouses TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("displayAllHouses TEST FAILED " + ex.getLocalizedMessage()));
@@ -62,14 +58,14 @@ public class HouseControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void displayAllHousesWithInvalidAuth(MockMvc mockMvc) throws Exception {
+    public static MvcResult displayAllHousesWithInvalidAuth(MockMvc mockMvc) throws Exception {
         try {
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
+            return mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
                     .andDo(result -> {
                         System.out.println("displayAllHousesWithInvalidAuth TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("displayAllHousesWithInvalidAuth TEST FAILED " + ex.getLocalizedMessage()));
@@ -82,22 +78,22 @@ public class HouseControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void displayAllHousesByNonAdmin(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult displayAllHousesByNonAdmin(MockMvc mockMvc, String... args) throws Exception {
         try {
             // Read non-admin user token from testSuiteData
             Map<String, Object> registeredUsersMap = (Map<String, Object>) TestSuiteDataManager.readData("registeredUsers");
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get("user2");
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
-                            .header("Authorization", "Bearer " + userToken)
+            return mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house")
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.jsonPath("$.houses").value(Matchers.containsString("house1")))
                     .andExpect(MockMvcResultMatchers.jsonPath("$.houses").value(Matchers.containsString("123 Street")))
                     .andDo(result -> {
                         System.out.println("displayAllHousesByNonAdmin TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("displayAllHousesByNonAdmin TEST FAILED " + ex.getLocalizedMessage()));
@@ -110,15 +106,15 @@ public class HouseControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void houseRegisterWithInvalidAuth(MockMvc mockMvc) throws Exception {
+    public static MvcResult houseRegisterWithInvalidAuth(MockMvc mockMvc) throws Exception {
         try {
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house")
                             .content(buildHouseRequestJson("houseTest", "addressTest"))
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
                     .andDo(result -> {
                         System.out.println("houseRegisterWithInvalidAuth TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             throw new Error(("houseRegisterWithInvalidAuth TEST FAILED " + ex.getLocalizedMessage()));
         }
@@ -132,7 +128,7 @@ public class HouseControllerTest {
      *                [houseName,houseAddress]
      *                If values are not provided, default values will be used.
      */
-    public static void houseRegisterWithValidRequestData(MockMvc mockMvc, String... args) {
+    public static MvcResult houseRegisterWithValidRequestData(MockMvc mockMvc, String... args) {
         try {
             String houseName = (args.length > 0) ? args[0].trim() : "house1";
             String houseAddress = (args.length > 1) ? args[1].trim() : "123 Street";
@@ -143,10 +139,10 @@ public class HouseControllerTest {
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get(username);
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house")
                             .content(buildHouseRequestJson(houseName, houseAddress))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.jsonPath("$.house.id").exists())
@@ -176,7 +172,7 @@ public class HouseControllerTest {
                         TestSuiteDataManager.writeData("registeredHouses", existingData);
 
                         System.out.println("houseRegisterWithValidRequestData TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -192,7 +188,7 @@ public class HouseControllerTest {
      *                [houseName,houseAddress]
      *                If values are not provided, default values will be used.
      */
-    public static void addUserToHouseByNonAdmin(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult addUserToHouseByNonAdmin(MockMvc mockMvc, String... args) throws Exception {
         try {
             // Use default values if no input is provided
             String firstName = (args.length > 0) ? args[0].trim() : "Jin";
@@ -214,7 +210,7 @@ public class HouseControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get("user1");
             String houseId = (String) houseData.get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/{houseId}/add-user", houseId)
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/{houseId}/add-user", houseId)
                             .content(buildAddUserToHouseRequestJson(username))
                             // Add the Authorization header with the user token
                             .header("Authorization", "Bearer " + userToken)
@@ -222,7 +218,7 @@ public class HouseControllerTest {
                     .andExpect(MockMvcResultMatchers.status().isUnauthorized())
                     .andDo(result -> {
                         System.out.println("addUserToHouseByNonAdmin TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -240,7 +236,7 @@ public class HouseControllerTest {
      *                [houseName,houseAddress]
      *                If values are not provided, default values will be used.
      */
-    public static void addUserToHouseByAdmin(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult addUserToHouseByAdmin(MockMvc mockMvc, String... args) throws Exception {
         try {
             Map<String, Object> registeredUsersMap = (Map<String, Object>) TestSuiteDataManager.readData("registeredUsers");
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get("user1");
@@ -250,9 +246,9 @@ public class HouseControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get("user1");
             String houseId = (String) houseData.get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/{houseId}/add-user", houseId)
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/{houseId}/add-user", houseId)
                             .content(buildAddUserToHouseRequestJson("user2"))
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andDo(result -> {
@@ -268,7 +264,7 @@ public class HouseControllerTest {
                         TestSuiteDataManager.writeData("registeredHouses", registeredHousesMap);
 
                         System.out.println("addUserToHouseByAdmin TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -285,7 +281,7 @@ public class HouseControllerTest {
      *                [houseName,houseAddress]
      *                If values are not provided, default values will be used.
      */
-    public static void addUnregisteredUserToHouseByAdmin(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult addUnregisteredUserToHouseByAdmin(MockMvc mockMvc, String... args) throws Exception {
         try {
             // Read admin user token from testSuiteData
             Map<String, Object> registeredUsersMap = (Map<String, Object>) TestSuiteDataManager.readData("registeredUsers");
@@ -297,15 +293,15 @@ public class HouseControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get("user1");
             String houseId = (String) houseData.get("id");
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/{houseId}/add-user", houseId)
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/house/{houseId}/add-user", houseId)
                             .content(buildAddUserToHouseRequestJson("unregisteredUser"))
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isBadRequest())
                     .andDo(result -> {
                         System.out.println("addUnregisteredUserToHouseByAdmin TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -320,7 +316,7 @@ public class HouseControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void updateAddressForHouse(MockMvc mockMvc) throws Exception {
+    public static MvcResult updateAddressForHouse(MockMvc mockMvc) throws Exception {
         try {
             // Read admin user token from testSuiteData
             Map<String, Object> registeredUsersMap = (Map<String, Object>) TestSuiteDataManager.readData("registeredUsers");
@@ -332,8 +328,8 @@ public class HouseControllerTest {
             Map<String, Object> houseData = (Map<String, Object>) registeredHousesMap.get("user1");
             String houseId = houseData.get("id").toString();
 
-            mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house")
-                            .header("Authorization", "Bearer " + userToken)
+            return mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house")
+                            .header("JWTToken", userToken)
                             .content(buildUpdateAddressRequest("New Street 999"))
                             .param("houseId", houseId)
                             .contentType(MediaType.APPLICATION_JSON))
@@ -349,7 +345,7 @@ public class HouseControllerTest {
                         displayAllHouses(mockMvc, "user1", "house1", "New Street 999");
 
                         System.out.println("updateAddressForHouse TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("updateAddressForHouse TEST FAILED " + ex.getLocalizedMessage()));
@@ -362,15 +358,15 @@ public class HouseControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void updateAddressForInvalidHouse(MockMvc mockMvc) throws Exception {
+    public static MvcResult updateAddressForInvalidHouse(MockMvc mockMvc) throws Exception {
         try {
             // Read admin user token from testSuiteData
             Map<String, Object> registeredUsersMap = (Map<String, Object>) TestSuiteDataManager.readData("registeredUsers");
             Map<String, Object> userData = (Map<String, Object>) registeredUsersMap.get("user1");
             String userToken = (String) userData.get("token");
 
-            mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house")
-                            .header("Authorization", "Bearer " + userToken)
+            return mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/house")
+                            .header("JWTToken",  userToken)
                             .content(buildUpdateAddressRequest("New Street 999"))
                             .param("houseId", "invalidHouse")
                             .contentType(MediaType.APPLICATION_JSON))
@@ -379,7 +375,7 @@ public class HouseControllerTest {
                         displayAllHouses(mockMvc, "user1", "house1", "New Street 999");
 
                         System.out.println("updateAddressForInvalidHouse TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("updateAddressForInvalidHouse TEST FAILED " + ex.getLocalizedMessage()));
@@ -393,7 +389,7 @@ public class HouseControllerTest {
      * @param args    Optional comma-separated values containing device registration details:
      *                If values are not provided, default values will be used.
      */
-    public static void listRoomsAndDevices(MockMvc mockMvc, String... args) {
+    public static MvcResult listRoomsAndDevices(MockMvc mockMvc, String... args) {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String username = (args.length > 1) ? args[1].trim() : "user1";
@@ -416,9 +412,9 @@ public class HouseControllerTest {
             List<Map<String, Object>> rooms = (List<Map<String, Object>>) houseData.get("rooms");
             String roomId = (rooms.get(0)).get("id").toString();
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house/{houseId}", houseId)
+            return mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/house/{houseId}", houseId)
                             // Add the Authorization header with the user token
-                            .header("Authorization", "Bearer " + userToken)
+                            .header("JWTToken", userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.jsonPath("$.roomsAndDevices").value(Matchers.containsString(houseId)))
@@ -430,7 +426,7 @@ public class HouseControllerTest {
                     .andExpect(MockMvcResultMatchers.jsonPath("$.roomsAndDevices").value(Matchers.containsString("device1")))
                     .andDo(result -> {
                         System.out.println("listRoomsAndDevices TEST PASSED");
-                    });
+                    }).andReturn();
 
         } catch (Exception ex) {
             ex.printStackTrace();

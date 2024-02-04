@@ -4,6 +4,7 @@ import com.kdu.smarthome.utility.TestSuiteDataManager;
 import org.hamcrest.Matchers;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -21,7 +22,7 @@ public class InventoryControllerTest {
      * @param mockMvc The MockMvc instance.
      * @throws Exception If an error occurs during the test.
      */
-    public static void displayInventory(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult displayInventory(MockMvc mockMvc, String... args) throws Exception {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String deviceName = (args.length > 1) ? args[1].trim() : "device1";
@@ -34,8 +35,8 @@ public class InventoryControllerTest {
             String userToken = (String) userData.get("token");
 
 
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/inventory")
-                            .header("Authorization", "Bearer " + userToken)
+            return mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/inventory")
+                            .header("JWTToken",  userToken)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.jsonPath("$.inventory").value(Matchers.containsString(kickstoneId)))
@@ -43,7 +44,7 @@ public class InventoryControllerTest {
                     .andExpect(MockMvcResultMatchers.jsonPath("$.inventory").value(Matchers.containsString(devicePassword)))
                     .andDo(result -> {
                         System.out.println("displayInventory TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("displayInventory TEST FAILED " + ex.getLocalizedMessage()));
@@ -58,7 +59,7 @@ public class InventoryControllerTest {
      * @param args    Optional comma-separated values containing device details:
      *                If values are not provided, default values will be used.
      */
-    public static void addDeviceToInventory(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult addDeviceToInventory(MockMvc mockMvc, String... args) throws Exception {
         try {
             String kickstoneId = (args.length > 0) ? args[0].trim() : "111";
             String deviceName = (args.length > 1) ? args[1].trim() : "device1";
@@ -71,8 +72,8 @@ public class InventoryControllerTest {
             String userToken = (String) userData.get("token");
 
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/inventory")
-                            .header("Authorization", "Bearer " + userToken)
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/inventory")
+                            .header("JWTToken", userToken)
                             .content(buildInventoryCreateRequest(kickstoneId, deviceName, devicePassword, String.valueOf(LocalDateTime.now()), "BLR"))
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -96,7 +97,7 @@ public class InventoryControllerTest {
                         TestSuiteDataManager.writeData("inventory", existingData);
 
                         System.out.println("addDeviceToInventory TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("addDeviceToInventory TEST FAILED " + ex.getLocalizedMessage()));

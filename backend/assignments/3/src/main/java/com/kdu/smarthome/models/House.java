@@ -1,11 +1,13 @@
 package com.kdu.smarthome.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kdu.smarthome.entities.BaseEntity;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 
 @Data
@@ -13,18 +15,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "house")
+@Builder
 public class House extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int houseId;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String id;
 
     private String address;
 
+    @JsonProperty("house_name")
     private String houseName;
-
-    @ManyToOne
-    @JoinColumn(name = "room_id", nullable = false)
-    private Room room;
 
 }

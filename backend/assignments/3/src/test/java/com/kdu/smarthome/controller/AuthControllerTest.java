@@ -5,6 +5,7 @@ import com.kdu.smarthome.utility.TestSuiteDataManager;
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -24,7 +25,7 @@ public class AuthControllerTest {
      *                If values are not provided, default values will be used.
      * @throws Exception If an error occurs during the test.
      */
-    public static void registerUser(MockMvc mockMvc, String... args) throws Exception {
+    public static MvcResult registerUser(MockMvc mockMvc, String... args) throws Exception {
 
         try { // Use default values if no input is provided
             String firstName = (args.length > 0) ? args[0].trim() : "John";
@@ -36,7 +37,7 @@ public class AuthControllerTest {
             // Manually construct the JSON payload
             String jsonPayload = buildUserRegistrationJson(username, password, firstName, lastName, email);
 
-            mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/register")
+            return mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/register")
                             .content(jsonPayload)
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -75,7 +76,7 @@ public class AuthControllerTest {
                         TestSuiteDataManager.writeData("registeredUsers", existingData);
 
                         System.out.println("registerUser TEST PASSED");
-                    });
+                    }).andReturn();
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Error(("registerUser TEST FAILED " + ex.getLocalizedMessage()));

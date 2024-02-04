@@ -1,12 +1,12 @@
 package com.kdu.smarthome.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kdu.smarthome.entities.BaseEntity;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -15,19 +15,19 @@ import javax.persistence.*;
 @Table(name = "inventory")
 public class Inventory extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int inventoryId;
+    @JsonProperty("kickston_id")
+    private String kickstoneId;
 
-    @Column(nullable = false, length = 6)
-    private String kickstonId;
-
-    @Column(nullable = false)
+    @JsonProperty("device_username")
     private String deviceUsername;
 
-    @Column(nullable = false)
+    @JsonProperty("device_password")
     private String devicePassword;
 
+    @JsonProperty("manufacture_date_time")
     private String manufactureDateTime;
 
+    @JsonProperty("manufacture_factory_place")
     private String manufactureFactoryPlace;
+
 }

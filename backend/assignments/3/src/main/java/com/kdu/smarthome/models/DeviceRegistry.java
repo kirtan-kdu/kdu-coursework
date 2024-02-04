@@ -1,12 +1,13 @@
 package com.kdu.smarthome.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kdu.smarthome.entities.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+
 
 @Data
 @NoArgsConstructor
@@ -16,20 +17,24 @@ import javax.persistence.*;
 public class DeviceRegistry extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int deviceId;
+    @JsonProperty("kickston_id")
+    private String kickstonId;
 
     @Column(name = "device_username", nullable = false)
+    @JsonProperty("device_username")
     private String deviceUsername;
 
     @Column(name = "device_password", nullable = false)
+    @JsonProperty("device_password")
     private String devicePassword;
 
-    @ManyToOne
-    @JoinColumn(name = "room_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "room_id")
+    @JsonProperty("room_id")
     private Room room;
 
-    @ManyToOne
-    @JoinColumn(name = "house_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    @JsonProperty("house_id")
     private House house;
 }

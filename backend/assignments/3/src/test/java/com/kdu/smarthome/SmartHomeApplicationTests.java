@@ -5,6 +5,7 @@ import com.kdu.smarthome.controller.DeviceControllerTest;
 import com.kdu.smarthome.controller.HouseControllerTest;
 import com.kdu.smarthome.controller.InventoryControllerTest;
 import com.kdu.smarthome.controller.RoomControllerTest;
+import org.junit.Assert;
 import org.junit.jupiter.api.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -32,7 +34,9 @@ class SmartHomeApplicationTests {
     @Test
     @Order(1)
     void runAuthTests() throws Exception {
-        AuthControllerTest.registerUser(mockMvc);
+        MvcResult mvcResult = AuthControllerTest.registerUser(mockMvc);
+
+        Assert.assertEquals(200, mvcResult.getResponse().getStatus());
     }
 
     /**
@@ -43,13 +47,15 @@ class SmartHomeApplicationTests {
     @Test
     @Order(2)
     void houseRegisterWithInvalidAuth() throws Exception {
-        HouseControllerTest.houseRegisterWithInvalidAuth(mockMvc);
+        MvcResult result = HouseControllerTest.houseRegisterWithInvalidAuth(mockMvc);
+        Assert.assertEquals(401, result.getResponse().getStatus());
     }
 
     @Test
     @Order(3)
     void houseRegisterWithValidRequestData() {
-        HouseControllerTest.houseRegisterWithValidRequestData(mockMvc);
+        MvcResult result = HouseControllerTest.houseRegisterWithValidRequestData(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     /**
@@ -60,19 +66,22 @@ class SmartHomeApplicationTests {
     @Test
     @Order(4)
     void addUnregisteredUserToHouseByAdmin() throws Exception {
-        HouseControllerTest.addUnregisteredUserToHouseByAdmin(mockMvc);
+        MvcResult result = HouseControllerTest.addUnregisteredUserToHouseByAdmin(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     @Test
     @Order(5)
     void addUserToHouseByNonAdmin() throws Exception {
-        HouseControllerTest.addUserToHouseByNonAdmin(mockMvc);
+        MvcResult result = HouseControllerTest.addUserToHouseByNonAdmin(mockMvc);
+        Assert.assertEquals(401, result.getResponse().getStatus());
     }
 
     @Test
     @Order(6)
     void addUserToHouseByAdmin() throws Exception {
-        HouseControllerTest.addUserToHouseByAdmin(mockMvc);
+        MvcResult result = HouseControllerTest.addUserToHouseByAdmin(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     /**
@@ -83,20 +92,23 @@ class SmartHomeApplicationTests {
     @Test
     @Order(7)
     void addRoomWithInvalidAuth() throws Exception {
-        RoomControllerTest.addRoomWithInvalidAuth(mockMvc);
+        MvcResult result = RoomControllerTest.addRoomWithInvalidAuth(mockMvc);
+        Assert.assertEquals(401, result.getResponse().getStatus());
     }
 
     @Test
     @Order(8)
     void addRoomByAdmin() throws Exception {
-        RoomControllerTest.addRoomByAdmin(mockMvc);
+        MvcResult result = RoomControllerTest.addRoomByAdmin(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
 
     @Test
     @Order(9)
     void addRoomForInvalidHouse() throws Exception {
-        RoomControllerTest.addRoomForInvalidHouse(mockMvc);
+        MvcResult result = RoomControllerTest.addRoomForInvalidHouse(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     /**
@@ -107,19 +119,22 @@ class SmartHomeApplicationTests {
     @Test
     @Order(10)
     void displayAllHouses() throws Exception {
-        HouseControllerTest.displayAllHouses(mockMvc);
+        MvcResult result = HouseControllerTest.displayAllHouses(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
     @Order(11)
     void displayAllHousesWithInvalidAuth() throws Exception {
-        HouseControllerTest.displayAllHousesWithInvalidAuth(mockMvc);
+        MvcResult result = HouseControllerTest.displayAllHousesWithInvalidAuth(mockMvc);
+        Assert.assertEquals(401, result.getResponse().getStatus());
     }
 
     @Test
     @Order(11)
     void displayAllHousesByNonAdmin() throws Exception {
-        HouseControllerTest.displayAllHousesByNonAdmin(mockMvc);
+        MvcResult result = HouseControllerTest.displayAllHousesByNonAdmin(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     /**
@@ -130,13 +145,15 @@ class SmartHomeApplicationTests {
     @Test
     @Order(12)
     void updateAddressForHouse() throws Exception {
-        HouseControllerTest.updateAddressForHouse(mockMvc);
+        MvcResult result = HouseControllerTest.updateAddressForHouse(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
     @Order(13)
     void updateAddressForInvalidHouse() throws Exception {
-        HouseControllerTest.updateAddressForInvalidHouse(mockMvc);
+        MvcResult result = HouseControllerTest.updateAddressForInvalidHouse(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     /**
@@ -147,13 +164,15 @@ class SmartHomeApplicationTests {
     @Test
     @Order(14)
     void addDeviceToInventory() throws Exception {
-        InventoryControllerTest.addDeviceToInventory(mockMvc);
+        MvcResult result = InventoryControllerTest.addDeviceToInventory(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     @Test
     @Order(15)
     void displayInventory() throws Exception {
-        InventoryControllerTest.displayInventory(mockMvc);
+        MvcResult result = InventoryControllerTest.displayInventory(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     /**
@@ -164,25 +183,29 @@ class SmartHomeApplicationTests {
     @Test
     @Order(16)
     void registerUnavailableDevice() throws Exception {
-        DeviceControllerTest.registerUnavailableDevice(mockMvc);
+        MvcResult result = DeviceControllerTest.registerUnavailableDevice(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     @Test
     @Order(17)
     void deviceRegisterWithInvalidCredentials() throws Exception {
-        DeviceControllerTest.deviceRegisterWithInvalidCredentials(mockMvc);
+        MvcResult result = DeviceControllerTest.deviceRegisterWithInvalidCredentials(mockMvc);
+        Assert.assertEquals(401, result.getResponse().getStatus());
     }
 
     @Test
     @Order(18)
     void deviceRegisterByNonAdmin() throws Exception {
-        DeviceControllerTest.deviceRegisterByNonAdmin(mockMvc);
+        MvcResult result = DeviceControllerTest.deviceRegisterByNonAdmin(mockMvc);
+        Assert.assertEquals(401, result.getResponse().getStatus());
     }
 
     @Test
     @Order(19)
     void deviceRegisterWithValidRequestData() throws Exception {
-        DeviceControllerTest.deviceRegisterWithValidRequestData(mockMvc);
+        MvcResult result = DeviceControllerTest.deviceRegisterWithValidRequestData(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     /**
@@ -193,31 +216,36 @@ class SmartHomeApplicationTests {
     @Test
     @Order(20)
     void addUnavailableDevice() throws Exception {
-        DeviceControllerTest.addUnavailableDevice(mockMvc);
+        MvcResult result = DeviceControllerTest.addUnavailableDevice(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     @Test
     @Order(21)
     void addDeviceToInvalidHouse() throws Exception {
-        DeviceControllerTest.addDeviceToInvalidHouse(mockMvc);
+        MvcResult result = DeviceControllerTest.addDeviceToInvalidHouse(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     @Test
     @Order(22)
     void addDeviceToInvalidRoom() throws Exception {
-        DeviceControllerTest.addDeviceToInvalidRoom(mockMvc);
+        MvcResult result = DeviceControllerTest.addDeviceToInvalidRoom(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     @Test
     @Order(23)
     void addUnregisteredDevice() throws Exception {
-        DeviceControllerTest.addUnregisteredDevice(mockMvc);
+        MvcResult result = DeviceControllerTest.addUnregisteredDevice(mockMvc);
+        Assert.assertEquals(400, result.getResponse().getStatus());
     }
 
     @Test
     @Order(24)
     void addDeviceWithValidRequestData() throws Exception {
-        DeviceControllerTest.addDeviceWithValidRequestData(mockMvc);
+        MvcResult result = DeviceControllerTest.addDeviceWithValidRequestData(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 
     /**
@@ -228,6 +256,7 @@ class SmartHomeApplicationTests {
     @Test
     @Order(25)
     void listRoomsAndDevices() throws Exception {
-        HouseControllerTest.listRoomsAndDevices(mockMvc);
+        MvcResult result = HouseControllerTest.listRoomsAndDevices(mockMvc);
+        Assert.assertEquals(200, result.getResponse().getStatus());
     }
 }

@@ -1,42 +1,50 @@
-package com.kdu.smarthome.controller;
+package com.kdu.smarthome.controllers;
 
 
+import com.kdu.smarthome.dto.request.UsernameRequestDTO;
+import com.kdu.smarthome.dto.response.*;
+import com.kdu.smarthome.models.House;
+import com.kdu.smarthome.services.HouseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ResponseMessage;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/house")
 public class HouseController {
 
+    private final HouseService houseService;
+
+    @Autowired
+    public HouseController(HouseService houseService){
+        this.houseService = houseService;
+    }
+
     @PostMapping()
-    public ResponseEntity<String> addHouse(){
-        return new ResponseEntity<>("House Added successfully", HttpStatus.OK);
+    public ResponseEntity<HouseResponseDTO> addHouse(@RequestHeader(required = false) String jwtToken, @RequestBody House house){
+        return new ResponseEntity<>(houseService.addHouse(house), HttpStatus.OK);
     }
 
     @PostMapping("/{houseId}/add-user")
-    public ResponseEntity<?> addUserToHouse(@PathVariable("houseId") int houseId, @RequestBody AddUserDTO addUserDTO) {
-        houseService.addUserToHouse(houseId, addUserDTO.getUsername());
-        return ResponseEntity.ok(new ResponseMessage("User added to house successfully"));
+    public ResponseEntity<UserResponseDTO> addUserToHouse(@RequestHeader(required = false) String jwtToken, @PathVariable("houseId") String houseId, @RequestBody UsernameRequestDTO username) {
+        return ResponseEntity.ok(houseService.addUserToHouse(houseId, username.getUsername()));
     }
-
 
     @GetMapping
-    public ResponseEntity<?> getAllHouses(@RequestParam(defaultValue = "0") int pageNumber,
-                                          @RequestParam(defaultValue = "100") int pageSize) {
-        List<HouseDTO> houses = houseService.getAllHouses(pageNumber, pageSize);
-        return ResponseEntity.ok(new HouseListResponse("Houses retrieved successfully", houses, HttpStatus.OK));
+    public ResponseEntity<HouseListResponseDTO> getAllHouses(@RequestHeader(required = false) String jwtToken) {
+        List<House> houses = houseService.getAllHouses();
+        return ResponseEntity.ok(new HouseListResponseDTO(houses.toString(),"Houses retrieved successfully", HttpStatus.OK));
     }
     @PutMapping
-    public ResponseEntity<?> updateHouseAddress(@RequestParam int houseId, @RequestParam String newAddress) {
-        houseService.updateHouseAddress(houseId, newAddress);
-        return ResponseEntity.ok(new ResponseMessage("House address updated successfully"));
+    public ResponseEntity<AddressResponseDTO> updateHouseAddress(@RequestHeader(required = false) String jwtToken, @RequestParam String houseId, @RequestBody String newAddress) {
+        return ResponseEntity.ok(houseService.updateHouseAddress(houseId, newAddress));
     }
     @GetMapping("/{houseId}")
-    public ResponseEntity<?> getHouseDetails(@PathVariable("houseId") int houseId) {
-        HouseDetailsDTO houseDetailsDTO = houseService.getHouseDetails(houseId);
-        return ResponseEntity.ok(new HouseDetailsResponse("House details retrieved successfully", houseDetailsDTO, HttpStatus.OK));
+    public ResponseEntity<HouseDetailsResponseDTO> getHouseDetails(@RequestHeader(required = false) String jwtToken, @PathVariable("houseId") String houseId) {
+        return ResponseEntity.ok(houseService.getHouseDetails(houseId));
     }
 
 

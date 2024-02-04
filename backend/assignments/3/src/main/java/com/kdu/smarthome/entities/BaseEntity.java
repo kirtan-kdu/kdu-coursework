@@ -1,11 +1,11 @@
 package com.kdu.smarthome.entities;
 
 
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Data
