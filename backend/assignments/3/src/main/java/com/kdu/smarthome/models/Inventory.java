@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kdu.smarthome.entities.BaseEntity;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "inventory")
+@Builder
 public class Inventory extends BaseEntity {
     @Id
     @JsonProperty("kickston_id")

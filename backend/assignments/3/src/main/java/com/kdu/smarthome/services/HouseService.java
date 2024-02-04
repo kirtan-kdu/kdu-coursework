@@ -1,6 +1,7 @@
 package com.kdu.smarthome.services;
 
 
+import com.kdu.smarthome.dto.request.HouseRequestDTO;
 import com.kdu.smarthome.dto.response.*;
 import com.kdu.smarthome.entities.UserRole;
 import com.kdu.smarthome.exceptions.custom.DuplicateEntryException;
@@ -36,10 +37,11 @@ public class HouseService {
         this.userService = userService;
     }
 
-    public HouseResponseDTO addHouse(House house){
+    public HouseResponseDTO addHouse(HouseRequestDTO houseRequestDTO){
         try {
             User currUser = userService.getByUserName(CustomAuthManager.getUserName())
                     .orElseThrow(() -> new UserNotFoundException("User not found"));
+            House house = House.builder().houseName(houseRequestDTO.getHouseName()).id(houseRequestDTO.getId()).address(houseRequestDTO.getAddress()).build();
             houseRepository.save(house);
             HouseUser houseUser = HouseUser.builder().house(house).user(currUser).userRole(UserRole.ADMIN_ROLE).build();
             houseUserService.addHouseUser(houseUser);

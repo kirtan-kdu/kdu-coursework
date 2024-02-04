@@ -2,6 +2,7 @@ package com.kdu.smarthome.services;
 
 
 import com.kdu.smarthome.dto.request.DeviceRequestDTO;
+import com.kdu.smarthome.dto.request.RegisterRequestDTO;
 import com.kdu.smarthome.exceptions.custom.UserNotFoundException;
 import com.kdu.smarthome.models.DeviceRegistry;
 import com.kdu.smarthome.repository.DeviceRegistryRepository;
@@ -29,8 +30,11 @@ public class DeviceRegistryService {
         this.roomService = roomService;
     }
 
-    public String registerDevice(DeviceRegistry deviceRegistry){
+    public String registerDevice(RegisterRequestDTO registerRequestDTO){
         try {
+            DeviceRegistry deviceRegistry = DeviceRegistry.builder().deviceUsername(registerRequestDTO.getDeviceUsername())
+                    .devicePassword(registerRequestDTO.getDevicePassword())
+                    .kickstonId(registerRequestDTO.getKickstonId()).build();
             if (!inventoryService.isPresent(deviceRegistry)){
                 throw new UserNotFoundException("Device is not present in inventory");
             }
@@ -45,6 +49,7 @@ public class DeviceRegistryService {
     public String addDeviceToHouse(DeviceRequestDTO deviceRequestDTO){
         try {
             Optional<DeviceRegistry> deviceRegistry = deviceRegistryRepository.findById(deviceRequestDTO.getKickstonId());
+
             if (deviceRegistry.isEmpty()){
                 throw new UserNotFoundException("Device is not present to add");
             }

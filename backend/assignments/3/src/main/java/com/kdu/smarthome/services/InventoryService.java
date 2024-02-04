@@ -1,5 +1,6 @@
 package com.kdu.smarthome.services;
 
+import com.kdu.smarthome.dto.request.InventoryrequestDTO;
 import com.kdu.smarthome.dto.response.InventoryResponseDTO;
 import com.kdu.smarthome.exceptions.custom.DuplicateEntryException;
 import com.kdu.smarthome.exceptions.custom.UserNotFoundException;
@@ -30,8 +31,13 @@ public class InventoryService {
         }
     }
 
-    public InventoryResponseDTO addInventoryItem(Inventory inventory){
+    public InventoryResponseDTO addInventoryItem(InventoryrequestDTO inventoryrequestDTO){
         try {
+            Inventory inventory = Inventory.builder().deviceUsername(inventoryrequestDTO.getDeviceUsername())
+                            .devicePassword(inventoryrequestDTO.getDevicePassword())
+                                    .kickstoneId(inventoryrequestDTO.getKickstoneId())
+                                            .manufactureFactoryPlace(inventoryrequestDTO.getManufactureFactoryPlace())
+                                                    .manufactureDateTime(inventoryrequestDTO.getManufactureDateTime()).build();
             inventoryRepository.save(inventory);
             return new InventoryResponseDTO(inventory.toString(), "Successfully added inventory", HttpStatus.CREATED);
         }

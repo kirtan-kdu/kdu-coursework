@@ -1,5 +1,6 @@
 package com.kdu.smarthome.controllers;
 
+import com.kdu.smarthome.dto.request.InventoryrequestDTO;
 import com.kdu.smarthome.dto.response.InventoryListResponseDTO;
 import com.kdu.smarthome.dto.response.InventoryResponseDTO;
 import com.kdu.smarthome.models.Inventory;
@@ -24,7 +25,7 @@ public class InventoryController {
         return ResponseEntity.ok(new InventoryListResponseDTO(inventoryItems.toString(), HttpStatus.OK));
     }
     @PostMapping
-    public ResponseEntity<InventoryResponseDTO> addInventoryItem(@RequestHeader(required = false) String jwtToken, @RequestBody Inventory inventory) {
-        return ResponseEntity.ok(inventoryService.addInventoryItem(inventory));
+    public ResponseEntity<InventoryResponseDTO> addInventoryItem(@RequestHeader(required = false) String jwtToken, @RequestBody InventoryrequestDTO inventoryrequestDTO) {
+        return ResponseEntity.ok(inventoryService.addInventoryItem(inventoryrequestDTO));
     }
 }

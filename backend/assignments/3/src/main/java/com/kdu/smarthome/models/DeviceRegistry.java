@@ -4,6 +4,7 @@ package com.kdu.smarthome.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kdu.smarthome.entities.BaseEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "device_registry")
 public class DeviceRegistry extends BaseEntity {

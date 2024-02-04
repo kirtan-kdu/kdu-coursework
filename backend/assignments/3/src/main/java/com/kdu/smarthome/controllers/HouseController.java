@@ -1,6 +1,7 @@
 package com.kdu.smarthome.controllers;
 
 
+import com.kdu.smarthome.dto.request.HouseRequestDTO;
 import com.kdu.smarthome.dto.request.UsernameRequestDTO;
 import com.kdu.smarthome.dto.response.*;
 import com.kdu.smarthome.models.House;
@@ -24,8 +25,8 @@ public class HouseController {
     }
 
     @PostMapping()
-    public ResponseEntity<HouseResponseDTO> addHouse(@RequestHeader(required = false) String jwtToken, @RequestBody House house){
-        return new ResponseEntity<>(houseService.addHouse(house), HttpStatus.OK);
+    public ResponseEntity<HouseResponseDTO> addHouse(@RequestHeader(required = false) String jwtToken, @RequestBody HouseRequestDTO houseRequestDTO){
+        return new ResponseEntity<>(houseService.addHouse(houseRequestDTO), HttpStatus.OK);
     }
 
     @PostMapping("/{houseId}/add-user")
