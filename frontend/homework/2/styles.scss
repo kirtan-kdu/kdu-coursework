@@ -1,0 +1,212 @@
+// Reset CSS
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 4vh;
+  overflow: hidden;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.heading-font {
+  font-size: 14vh;
+  font-weight: 900;
+  color: #3e3e3e;
+}
+
+.normal-font {
+  font-size: 4.5vh;
+  color: #8d8d8d;
+  font-weight: 800;
+}
+
+#date-section {
+  .normal-font {
+    line-height: 6vh;
+  }
+}
+
+#weather-data-section {
+  display: flex;
+  .left-data {
+    width: 50%;
+    display: flex;
+    .heading-font {
+      padding: 16px 2vh;
+    }
+    .normal-font {
+      vertical-align: top;
+      padding-top: 20px;
+    }
+  }
+
+  .right-data {
+    line-height: 6vh;
+    .normal-bold-font {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+#week-section {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 8vh;
+  .day-weather {
+    width: 12vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .day-name {
+      font-size: 3.5vh;
+      font-weight: 700;
+    }
+    .weather-img {
+      width: 10vw;
+    }
+    .day-temperature {
+      display: flex;
+      justify-content: space-evenly;
+      .min-temperature,
+      .max-temperature {
+        font-size: 4vh;
+        font-weight: 900;
+        margin: 0 0.5vw;
+      }
+      .min-temperature {
+        font-weight: 600;
+        color: #8d8d8d;
+      }
+    }
+    .day-pollen {
+      margin-top: 2vh;
+      font-size: 2vw;
+      font-weight: 600;
+      color: #8d8d8d;
+    }
+  }
+}
