@@ -1,4 +1,3 @@
-// Select elements
 const todoButton = document.querySelector(".add-todo");
 const todoNameInput = document.querySelector("#todo-input");
 const todoListContainer = document.querySelector(".todos");
@@ -34,7 +33,6 @@ const promiseButton = document.querySelector(".promise-button");
 if (promiseButton) {
   promiseButton.addEventListener("click", async () => {
     try {
-      // Replace 'generate' with actual function call or logic
       const result = await generatePromiseFunction();
       console.log(result);
     } catch (error) {
