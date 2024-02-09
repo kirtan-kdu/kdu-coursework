@@ -172,9 +172,8 @@ body {
   font-weight: 900;
 }
 @media screen and (max-width: 576px) {
-  #navbar .hambgr-menu:hover + .nav-options {
+  #navbar .hambgr-menu:hover {
     display: block;
-    padding: 10rem;
   }
 }
 #navbar .nav-options {
@@ -207,7 +206,7 @@ body {
 @media screen and (max-width: 576px) {
   #main-section {
     display: block;
-    padding-top: 0;
+    padding-top: -1rem;
     margin-bottom: 10rem;
   }
 }
@@ -265,6 +264,11 @@ body {
   #main-section .main-right-section img {
     width: 25rem;
     padding-top: 4rem;
+  }
+}
+@media screen and (max-width: 768px) and (max-width: 576px) {
+  #main-section .main-right-section img {
+    padding-top: 0;
   }
 }
 @media screen and (max-width: 576px) {
