@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@900&display=swap");
+html {
+  background-color: black;
+  color: #e7e9ea;
+}
+
+body {
+  padding-left: 3.7rem;
+  font-size: large;
+  padding-top: 4rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.navigation-section {
+  padding-top: 1.85rem;
+  padding-left: 1.85rem;
+  height: 100%;
+  width: 33.3rem;
+  border-right: 2px solid #2b2f32;
+}
+.navigation-section .x-icon {
+  width: 3.7rem;
+  padding-left: 1.6818181818rem;
+}
+.navigation-section .x-icon path {
+  fill: #e7e9ea;
+}
+.navigation-section .nav-fields {
+  padding-left: 1.6818181818rem;
+}
+.navigation-section .nav-fields div {
+  display: flex;
+  margin: 2.55rem 0;
+  position: relative;
+}
+.navigation-section .nav-fields div .blue-dot {
+  width: 0.74rem;
+  height: 0.74rem;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #1d9bf0;
+  top: -70%;
+  left: 8%;
+}
+.navigation-section .nav-fields div h3 {
+  font-size: 2.5rem;
+  margin: auto 0;
+  font-weight: 900;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 2.2727272727rem;
+}
+.navigation-section .nav-fields div svg {
+  height: 3.7rem;
+  width: 3.7rem;
+}
+.navigation-section .nav-fields div svg path {
+  fill: #e7e9ea;
+}
+.navigation-section .nav-fields .gork-field,
+.navigation-section .nav-fields .bookmark-field,
+.navigation-section .nav-fields .profile-field {
+  padding-top: 5px;
+}
+.navigation-section .post-btn {
+  background-color: #1d9bf0;
+  border: none;
+  width: 88%;
+  margin-top: -10px;
+  padding: 1.95rem 0.9615384615rem;
+  font-size: 2.5rem;
+  border-radius: 3.7rem;
+  color: #e7e9ea;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 900;
+}
+.navigation-section .user-profile {
+  width: auto;
+  display: flex;
+  margin-top: 9.62rem;
+  padding-bottom: 2.8rem;
+  padding-left: 1.85rem;
+}
+.navigation-section .user-profile .left-profile {
+  margin: auto 0;
+}
+.navigation-section .user-profile .left-profile img {
+  width: 5rem;
+  border-radius: 50%;
+}
+.navigation-section .user-profile .name-profile {
+  margin: 0 1.85rem;
+  margin-right: 7.5rem;
+  line-height: 1.48;
+  font-size: 1.85rem;
+  font-weight: 900;
+  font-family: "Open Sans", sans-serif;
+}
+.navigation-section .user-profile .name-profile h3 {
+  color: #5a5e63;
+}
+.navigation-section .user-profile .more-profile {
+  margin: auto 0;
+}
+.navigation-section .user-profile .more-profile svg path {
+  font-size: 7.4rem;
+}
+
+.tweet-box {
+  display: flex;
+  padding: 1.85rem;
+  padding-bottom: 1.3703703704rem;
+  width: 74rem;
+  border-top: 2px solid #2b2f32;
+  border-bottom: 2px solid #2b2f32;
+}
+.tweet-box .left-tweet-box img {
+  width: 5rem;
+  border-radius: 50%;
+}
+.tweet-box .right-tweet-box {
+  width: 100%;
+  padding-top: 0.7115384615rem;
+  padding-left: 1.6818181818rem;
+}
+.tweet-box .right-tweet-box input {
+  background-color: black;
+  border: none;
+  height: 4.07rem;
+  margin-bottom: 2.75rem;
+  width: 100%;
+  color: #e7e9ea;
+}
+.tweet-box .right-tweet-box input::-moz-placeholder {
+  font-size: 2.3870967742rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.tweet-box .right-tweet-box input,
+.tweet-box .right-tweet-box input::placeholder {
+  font-size: 2.3870967742rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.tweet-box .right-tweet-box .tweet-box-icons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -1px;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div {
+  margin: auto 0;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div svg {
+  width: 2.5rem;
+  margin-right: 1.7619047619rem;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div svg path {
+  fill: #1d9bf0;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div svg .inactive-icon {
+  fill: #11486e;
+}
+.tweet-box .right-tweet-box .tweet-box-icons .tweet-btn {
+  background-color: #124e78;
+  border: none;
+  padding: 1.0416666667rem 1.9230769231rem;
+  font-size: 1.85rem;
+  font-family: "Open Sans", sans-serif;
+  color: #e7e9ea;
+  border-radius: 3.7rem;
+  font-weight: 900;
+}
+
+.post-box {
+  display: flex;
+  padding: 1.3888888889rem 1.6666666667rem;
+  padding-bottom: 0.9259259259rem;
+  width: 72.15rem;
+  border-top: 2px solid #2b2f32;
+}
+.post-box .left-post-box img {
+  width: 5rem;
+  border-radius: 50%;
+}
+.post-box .right-post-box {
+  padding-left: 1.6818181818rem;
+  padding-top: 0.5rem;
+}
+.post-box .right-post-box .post-title {
+  display: flex;
+}
+.post-box .right-post-box .post-title h3 {
+  margin-right: 0.625rem;
+  font-size: 1.8974358974rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.post-box .right-post-box .post-title .user-name {
+  color: #5a5e63;
+  font-size: 1.6818181818rem;
+}
+.post-box .right-post-box .post-content {
+  padding-top: 0.5rem;
+  margin-right: 0.8333333333rem;
+  font-size: 1.9473684211rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  line-height: 2.5rem;
+  letter-spacing: -0.2px;
+}
+.post-box .right-post-box .post-icons {
+  margin-top: 1.3703703704rem;
+  display: flex;
+  margin-bottom: 4px;
+}
+.post-box .right-post-box .post-icons div svg {
+  width: 2.2727272727rem;
+}
+.post-box .right-post-box .post-icons div svg path {
+  fill: #5a5e63;
+}
+.post-box .right-post-box .post-icons .info-icons {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.post-box .right-post-box .post-icons .download-icon {
+  margin-left: 2.8461538462rem;
+}
+
+.hashtags {
+  color: #1d9bf0;
+}
+
+.liked {
+  fill: #f91880;
+}/*# sourceMappingURL=style.css.map */
