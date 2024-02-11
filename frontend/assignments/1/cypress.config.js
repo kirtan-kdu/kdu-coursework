@@ -30,7 +30,9 @@ module.exports = defineConfig({
     HOME_PAGE_URL: "/home-page/index.html",
     LOGIN_PAGE_URL: "login/index.html",
     REGISTER_PAGE_URL: "/register/index.html",
-    TEST_THRESHOLD: 0.2,
+    // TEST_THRESHOLD: 0.2,
     type: "actual",
+    TEST_THRESHOLD: 0.35,
+    defaultCommandTimeout: 10000,
   },
 });

@@ -5,37 +5,37 @@ html {
 }
 
 body {
-  padding-left: 3.7rem;
+  padding-left: 1.8rem;
+  display: flex;
   font-size: large;
-  padding-top: 4rem;
   font-family: "Open Sans", sans-serif;
 }
 
 .navigation-section {
-  padding-top: 1.85rem;
-  padding-left: 1.85rem;
+  padding-top: 0.9rem;
+  padding-left: 0.9rem;
   height: 100%;
-  width: 33.3rem;
+  width: 18rem;
   border-right: 2px solid #2b2f32;
 }
 .navigation-section .x-icon {
-  width: 3.7rem;
-  padding-left: 1.6818181818rem;
+  width: 1.8rem;
+  padding-left: 0.8181818182rem;
 }
 .navigation-section .x-icon path {
   fill: #e7e9ea;
 }
 .navigation-section .nav-fields {
-  padding-left: 1.6818181818rem;
+  padding-left: 1.8rem;
 }
 .navigation-section .nav-fields div {
   display: flex;
-  margin: 2.55rem 0;
+  margin: 1.26rem 0;
   position: relative;
 }
 .navigation-section .nav-fields div .blue-dot {
-  width: 0.74rem;
-  height: 0.74rem;
+  width: 0.36rem;
+  height: 0.36rem;
   border-radius: 50%;
   position: absolute;
   background-color: #1d9bf0;
@@ -43,15 +43,15 @@ body {
   left: 8%;
 }
 .navigation-section .nav-fields div h3 {
-  font-size: 2.5rem;
+  font-size: 1.4rem;
   margin: auto 0;
   font-weight: 900;
   font-family: "Open Sans", sans-serif;
-  margin-left: 2.2727272727rem;
+  margin-left: 0.6363636364rem;
 }
 .navigation-section .nav-fields div svg {
-  height: 3.7rem;
-  width: 3.7rem;
+  height: 1.8rem;
+  width: 1.8rem;
 }
 .navigation-section .nav-fields div svg path {
   fill: #e7e9ea;
@@ -66,9 +66,9 @@ body {
   border: none;
   width: 88%;
   margin-top: -10px;
-  padding: 1.95rem 0.9615384615rem;
-  font-size: 2.5rem;
-  border-radius: 3.7rem;
+  padding: 0.546rem 0.2692307692rem;
+  font-size: 0.7rem;
+  border-radius: 1.8rem;
   color: #e7e9ea;
   font-family: "Open Sans", sans-serif;
   font-weight: 900;
@@ -76,22 +76,22 @@ body {
 .navigation-section .user-profile {
   width: auto;
   display: flex;
-  margin-top: 9.62rem;
-  padding-bottom: 2.8rem;
-  padding-left: 1.85rem;
+  margin-top: 4.68rem;
+  padding-bottom: 0.784rem;
+  padding-left: 0.9rem;
 }
 .navigation-section .user-profile .left-profile {
   margin: auto 0;
 }
 .navigation-section .user-profile .left-profile img {
-  width: 5rem;
+  width: 1.4rem;
   border-radius: 50%;
 }
 .navigation-section .user-profile .name-profile {
-  margin: 0 1.85rem;
-  margin-right: 7.5rem;
-  line-height: 1.48;
-  font-size: 1.85rem;
+  margin: 0 0.9rem;
+  margin-right: 2.1rem;
+  line-height: 2.5714285714;
+  font-size: 0.9rem;
   font-weight: 900;
   font-family: "Open Sans", sans-serif;
 }
@@ -102,56 +102,56 @@ body {
   margin: auto 0;
 }
 .navigation-section .user-profile .more-profile svg path {
-  font-size: 7.4rem;
+  font-size: 3.6rem;
 }
 
 .tweet-box {
   display: flex;
-  padding: 1.85rem;
-  padding-bottom: 1.3703703704rem;
-  width: 74rem;
+  padding: 0.9rem;
+  padding-bottom: 0.6666666667rem;
+  width: 34.2rem;
+  height: -moz-max-content;
+  height: max-content;
   border-top: 2px solid #2b2f32;
   border-bottom: 2px solid #2b2f32;
 }
 .tweet-box .left-tweet-box img {
-  width: 5rem;
+  width: 2.8rem;
   border-radius: 50%;
 }
 .tweet-box .right-tweet-box {
   width: 100%;
-  padding-top: 0.7115384615rem;
-  padding-left: 1.6818181818rem;
+  padding-top: 0.14rem;
+  padding-left: 0.35rem;
 }
 .tweet-box .right-tweet-box input {
   background-color: black;
   border: none;
-  height: 4.07rem;
-  margin-bottom: 2.75rem;
+  padding-bottom: 6.3rem;
   width: 100%;
   color: #e7e9ea;
 }
 .tweet-box .right-tweet-box input::-moz-placeholder {
-  font-size: 2.3870967742rem;
+  font-size: 1.1612903226rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
 .tweet-box .right-tweet-box input,
 .tweet-box .right-tweet-box input::placeholder {
-  font-size: 2.3870967742rem;
+  font-size: 1.1612903226rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
 .tweet-box .right-tweet-box .tweet-box-icons {
   display: flex;
   justify-content: space-between;
-  margin-bottom: -1px;
 }
 .tweet-box .right-tweet-box .tweet-box-icons div {
   margin: auto 0;
 }
 .tweet-box .right-tweet-box .tweet-box-icons div svg {
-  width: 2.5rem;
-  margin-right: 1.7619047619rem;
+  width: 1.4rem;
+  margin-right: 0.7rem;
 }
 .tweet-box .right-tweet-box .tweet-box-icons div svg path {
   fill: #1d9bf0;
@@ -162,75 +162,82 @@ body {
 .tweet-box .right-tweet-box .tweet-box-icons .tweet-btn {
   background-color: #124e78;
   border: none;
-  padding: 1.0416666667rem 1.9230769231rem;
-  font-size: 1.85rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
   font-family: "Open Sans", sans-serif;
   color: #e7e9ea;
-  border-radius: 3.7rem;
+  border-radius: 1.8rem;
   font-weight: 900;
 }
 
-.post-box {
+.post {
   display: flex;
-  padding: 1.3888888889rem 1.6666666667rem;
-  padding-bottom: 0.9259259259rem;
-  width: 72.15rem;
+  padding: 0.7rem;
+  padding-bottom: 0.7rem;
+  width: 35.1rem;
   border-top: 2px solid #2b2f32;
 }
-.post-box .left-post-box img {
-  width: 5rem;
+.post .left-post-box img {
+  width: 2.8rem;
   border-radius: 50%;
 }
-.post-box .right-post-box {
-  padding-left: 1.6818181818rem;
-  padding-top: 0.5rem;
+.post .right-post-box {
+  padding-left: 0.7rem;
+  padding-top: 0.2333333333rem;
 }
-.post-box .right-post-box .post-title {
+.post .right-post-box .post-title {
   display: flex;
 }
-.post-box .right-post-box .post-title h3 {
-  margin-right: 0.625rem;
-  font-size: 1.8974358974rem;
+.post .right-post-box .post-title h3 {
+  margin-right: 0.2333333333rem;
+  font-size: 0.7rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
-.post-box .right-post-box .post-title .user-name {
+.post .right-post-box .post-title .user-name {
   color: #5a5e63;
-  font-size: 1.6818181818rem;
+  font-size: 0.8181818182rem;
 }
-.post-box .right-post-box .post-content {
-  padding-top: 0.5rem;
-  margin-right: 0.8333333333rem;
-  font-size: 1.9473684211rem;
+.post .right-post-box .post-content {
+  padding-top: 0.35rem;
+  font-size: 0.9473684211rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
-  line-height: 2.5rem;
   letter-spacing: -0.2px;
 }
-.post-box .right-post-box .post-icons {
-  margin-top: 1.3703703704rem;
+.post .right-post-box .post-icons {
+  margin-top: 0.6666666667rem;
   display: flex;
   margin-bottom: 4px;
 }
-.post-box .right-post-box .post-icons div svg {
-  width: 2.2727272727rem;
+.post .right-post-box .post-icons div {
+  display: flex;
 }
-.post-box .right-post-box .post-icons div svg path {
+.post .right-post-box .post-icons div h1 {
+  margin: auto 0.7rem;
+  color: #5a5e63;
+}
+.post .right-post-box .post-icons div svg {
+  width: 1.4rem;
+}
+.post .right-post-box .post-icons div svg path {
   fill: #5a5e63;
 }
-.post-box .right-post-box .post-icons .info-icons {
+.post .right-post-box .post-icons div .unlike-post path {
+  fill: #f91880;
+}
+.post .right-post-box .post-icons div .unlike-post .like-count {
+  color: #f91880;
+}
+.post .right-post-box .post-icons .info-icons {
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
 }
-.post-box .right-post-box .post-icons .download-icon {
-  margin-left: 2.8461538462rem;
+.post .right-post-box .post-icons .download-icon {
+  margin-left: 0.7rem;
 }
 
 .hashtags {
   color: #1d9bf0;
-}
-
-.liked {
-  fill: #f91880;
 }/*# sourceMappingURL=style.css.map */
