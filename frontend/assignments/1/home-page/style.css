@@ -240,4 +240,99 @@ body {
 
 .hashtags {
   color: #1d9bf0;
+}
+
+.floating-tweet-box-icon,
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 414px) {
+  .navigation-section,
+  .tweet-box,
+  .posts,
+  .desktop-post-btn {
+    display: none;
+  }
+  .mobile,
+  body {
+    display: block;
+  }
+  .floating-tweet-box-icon {
+    color: #e7e9ea;
+    background-color: #1d9bf0;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: auto 0;
+  }
+  .tweet-box .left-tweet-box {
+    padding-top: 3rem;
+  }
+  .tweet-box .tweet-box-btns {
+    display: flex;
+    justify-content: end;
+    margin-top: -0.6rem;
+    margin-bottom: 1.65rem;
+  }
+  .tweet-box .tweet-box-btns .draft-btn {
+    color: #124e78;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    margin-right: 6rem;
+    margin-top: 1rem;
+  }
+  .tweet-box .tweet-box-btns .post-btn {
+    background-color: #124e78;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+    font-family: "Open Sans", sans-serif;
+    color: #e7e9ea;
+    border-radius: 1.5rem;
+    font-weight: 900;
+  }
+  .tweet-box .tweet-box-tagline {
+    color: #1d9bf0;
+    padding-left: -1.5rem;
+    font-weight: 900;
+    font-family: "Open Sans", sans-serif;
+  }
+  .tweet-box .tweet-box-icons {
+    margin-top: 2rem;
+    margin-left: -3rem;
+    width: 100%;
+  }
+  .tweet-box .tweet-box-icons div {
+    display: flex;
+  }
+  .tweet-box .tweet-box-icons .tweet-btn {
+    display: block;
+    position: relative;
+    top: -14rem;
+    left: 1rem;
+  }
+  .post {
+    width: 24.75rem;
+    padding-right: 1.5rem;
+    border-top: 4px solid black;
+  }
+  .post .left-post-box {
+    padding-left: 4px;
+  }
+  .post .left-post-box img {
+    width: 2.5rem;
+  }
+  .profile-icon {
+    margin: 1.5rem;
+  }
+  .profile-icon img {
+    width: 3rem;
+    border-radius: 50%;
+  }
+  .navigation-section {
+    width: 16.5rem;
+    height: 55.5rem;
+  }
 }/*# sourceMappingURL=style.css.map */

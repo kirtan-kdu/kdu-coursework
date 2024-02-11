@@ -25,6 +25,15 @@ describe("Posts Section", () => {
     // Set the viewport size
     cy.viewport(viewportWidth, viewportHeight);
 
+    if(viewportWidth == 414){
+    // Click the 'floating-tweet-box-icon'
+      cy.get(".floating-tweet-box-icon").click();
+
+    }
+
+    // Wait for the box to get open
+    cy.wait(1000);
+
     // Ensure the tweet-box element is visible in the viewport
     cy.get(".tweet-box").should("be.visible");
 

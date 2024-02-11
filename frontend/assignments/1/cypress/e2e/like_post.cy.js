@@ -11,7 +11,6 @@ describe("Like Post", () => {
    */
   const postTweet = (tweetText) => {
     // Ensure the tweet-box element is visible in the viewport
-    console.log("its started");
     cy.get(".tweet-box").should("be.visible");
 
     // Type text in the tweet-box
@@ -25,83 +24,103 @@ describe("Like Post", () => {
 
     // Wait for the tweet to be posted
     cy.wait(2000);
-
-    cy.get(".posts").should("be.visible");
-
-    // Like the first post
-    cy.get(".posts").children().first().find(".like-post").click();
-    // Wait for the like to be processed
-    console.log("it is able to like post");
-    cy.wait(2000);
-
-  // };
+  };
 
   /**
    * Function to like a post.
    */
-  // const likePost = () => {
+  const likePost = () => {
     // Ensure the posts container is visible in the viewport
+    cy.get(".posts").should("be.visible");
 
-  // };
+    // Like the first post
+    cy.get(".posts").children().first().find(".like-post").click();
+
+    // Wait for the like to be processed
+    cy.wait(2000);
+  };
+
+
 
   /**
    * Function to compare the screenshot of the liked post.
    */
-  // const compareLikedPostSnapshot = () => {
+  const compareLikedPostSnapshot = () => {
     // Get the initial count of likes on the first post
     cy.get(".posts")
-    .children()
-    .first()
+      .children()
+      .first()
       .find(".likes-count")
       .invoke("text")
+      .then((text) => {
+        const intValue = parseInt(text);
+        return isNaN(intValue) ? 0 : intValue;
+      })
       .as("initialLikeCount");
 
-    // Compare the screenshot of the liked post
-    cy.get(".post")
-      .compareSnapshot("provided-liked-post", Cypress.env("TEST_THRESHOLD"));
 
-    // Get the final count of likes on the first post after unliking
+      // Like the post
+    likePost();
+
+
+      // Get the final count of likes on the first post after unliking
     cy.get(".posts")
     .children()
     .first()
-      .find(".likes-count")
-      .invoke("text")
-      .as("updatedLikeCount");
+    .find(".likes-count")
+    .invoke("text")
+    .then((text) => {
+      const intValue = parseInt(text);
+      return isNaN(intValue) ? 0 : intValue;
+    })
+    .as("updatedLikeCount");
 
-    // Compare the initial and updated like counts to ensure they have increased
-    cy.get("@initialLikeCount").then((initialCount) => {
-      cy.get("@updatedLikeCount").should("be.gt", initialCount);
+  // Compare the initial and updated like counts to ensure they have increased
+  cy.get("@initialLikeCount").then((initialCount) => {
+    cy.get("@updatedLikeCount").should("be.gt", initialCount);
+
+    // Compare the screenshot of the liked post
+    cy.get(".posts")
+      .children()
+      .first()
+      .compareSnapshot("provided-liked-post", Cypress.env("TEST_THRESHOLD"));
+
+
     });
-  // };
+  };
 
   /**
    * Function to unlike a post and compare the screenshot.
    */
-  // const unlikePostAndCompareSnapshot = () => {
+  const unlikePostAndCompareSnapshot = () => {
     // Click the first liked post again to unlike it
     cy.get(".posts").children().first().find(".unlike-post").click();
 
     // Wait for the unlike to be processed (adjust as needed)
     cy.wait(2000);
 
-    // Compare the screenshot of the post after unliking
-    cy.get(".posts")
-      .children()
-      .first()
-      .compareSnapshot("provided-unliked-post", Cypress.env("TEST_THRESHOLD"));
-
     // Get the final count of likes on the first post after unliking
     cy.get(".posts")
       .children()
       .first()
       .find(".likes-count")
       .invoke("text")
+      .then((text) => {
+        const intValue = parseInt(text);
+        return isNaN(intValue) ? 0 : intValue;
+      })
       .as("finalLikeCount");
 
     // Compare the initial and final like counts to ensure they are the same
     cy.get("@initialLikeCount").then((initialCount) => {
       cy.get("@finalLikeCount").should("eq", initialCount);
     });
+
+    // Compare the screenshot of the post after unliking
+    cy.get(".posts")
+      .children()
+      .first()
+      .compareSnapshot("provided-unliked-post", Cypress.env("TEST_THRESHOLD"));
   };
 
   /**
@@ -109,7 +128,6 @@ describe("Like Post", () => {
    */
   it("should compare screenshot after liking a post", () => {
     // Visit the specified page
-    console.log("its started");
     cy.visit(Cypress.env("HOME_PAGE_URL"));
 
     // Go with the size - Laptop (1079 x 726)
@@ -120,13 +138,18 @@ describe("Like Post", () => {
       "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding"
     );
 
+    // Compare screenshots of liked post
+    compareLikedPostSnapshot();
+
+    // Post a tweet
+    postTweet(
+      "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding"
+    );
+
     // Like the post
-    // likePost();
+    likePost();
 
-    // // Compare screenshots of liked post
-    // compareLikedPostSnapshot();
-
-    // // Unlike the post and compare screenshots
-    // unlikePostAndCompareSnapshot();
+    // Unlike the post and compare screenshots
+    unlikePostAndCompareSnapshot();
   });
 });
