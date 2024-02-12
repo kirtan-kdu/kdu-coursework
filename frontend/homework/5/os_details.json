@@ -1,0 +1,11 @@
+{
+  "HostName": "ibm-ThinkPad-T14-Gen-1",
+  "OperatingSystem": "linux",
+  "Architecture": "x64",
+  "OSRelease": "6.5.0-15-generic",
+  "Uptime": 785463.84,
+  "CPUCores": 8,
+  "TotalMemory": 16369164288,
+  "FreeMemory": 4757975040,
+  "CurrentWorkingDirectory": "/home/ibm/KDU/course-work/kdu-coursework/frontend/homework/5"
+}
