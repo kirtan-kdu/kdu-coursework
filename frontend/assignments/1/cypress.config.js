@@ -1,5 +1,5 @@
 const { defineConfig } = require("cypress");
-const getCompareSnapshotsPlugin = require("./node_modules/cypress-visual-regression/dist/plugin");
+const getCompareSnapshotsPlugin = require("cypress-visual-regression/dist/plugin");
 
 // Export Cypress configuration using defineConfig function
 module.exports = defineConfig({
@@ -13,7 +13,7 @@ module.exports = defineConfig({
   // Configuration for end-to-end (e2e) tests
   e2e: {
     // Base URL for your application
-    baseUrl: "http://localhost:5500/",
+    baseUrl: "https://kirtan-s3.s3.ap-northeast-2.amazonaws.com/index.html",
 
     // Setup Node events for visual regression testing using cypress-visual-regression plugin
     setupNodeEvents(on, config) {
