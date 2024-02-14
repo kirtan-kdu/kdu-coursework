@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+  background-color: #130739;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.navbar h1 {
+  font-size: 3rem;
+}
+
+.messages {
+  height: 75vh;
+  width: 80vw;
+  margin: auto;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  padding: auto 2rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+}
+.messages .message {
+  font-size: 2rem;
+  border-radius: 2rem;
+  padding: 10px 2rem;
+  width: -moz-max-content;
+  width: max-content;
+  color: white;
+}
+.messages .user {
+  margin-left: auto;
+  background-color: #130739;
+}
+.messages .you {
+  background-color: #3b0634;
+}
+
+.send-message-section {
+  position: fixed;
+  top: 89%;
+  left: 9%;
+}
+.send-message-section .input-message {
+  height: 8vh;
+  width: 80vw;
+  border-radius: 2rem;
+  border-color: #130739;
+  font-size: 2rem;
+  padding-left: 3%;
+  color: #130739;
+}
+.send-message-section .send-btn {
+  position: fixed;
+  top: 89.5%;
+  right: 9%;
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+}
+.send-message-section .send-btn img {
+  width: 2vw;
+}
+
+.messages::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+.messages::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: #130739; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid white; /* creates padding around scroll thumb */
+}/*# sourceMappingURL=style.css.map */
