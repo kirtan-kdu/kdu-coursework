@@ -31,14 +31,15 @@ $red-color: #3b0634;
     font-size: 2rem;
     border-radius: 2rem;
     padding: 10px 2rem;
+    margin-bottom: 0.75rem;
     width: max-content;
     color: white;
   }
-  .user {
+  .you {
     margin-left: auto;
     background-color: $dark-color;
   }
-  .you {
+  .user {
     background-color: $red-color;
   }
 }

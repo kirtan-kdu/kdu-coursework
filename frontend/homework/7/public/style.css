@@ -27,15 +27,16 @@
   font-size: 2rem;
   border-radius: 2rem;
   padding: 10px 2rem;
+  margin-bottom: 0.75rem;
   width: -moz-max-content;
   width: max-content;
   color: white;
 }
-.messages .user {
+.messages .you {
   margin-left: auto;
   background-color: #130739;
 }
-.messages .you {
+.messages .user {
   background-color: #3b0634;
 }
 
