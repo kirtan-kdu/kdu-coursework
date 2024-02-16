@@ -126,9 +126,11 @@ body {
                 }
                 .up {
                     background-color: $pos-light;
+                    border: 1px solid $pos-dark;
                 }
                 .down {
                     background-color: $neg-light;
+                    border: 1px solid $neg-dark;
                 }
             }
         }
