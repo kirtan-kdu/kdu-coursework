@@ -36,4 +36,52 @@ html {
   top: 50%;
   right: 2%;
   transform: translate(-50%, -50%);
+}
+
+.recipe-items {
+  padding: 20rem 10rem;
+  display: flex;
+  justify-content: space-around;
+}
+.recipe-items .recipe-card {
+  height: auto;
+  width: 22rem;
+  position: relative;
+  color: white;
+}
+.recipe-items .recipe-card .wrapper {
+  background-color: black;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  filter: blur(20px);
+  position: absolute;
+}
+.recipe-items .recipe-card img {
+  margin: 1rem;
+  height: 16rem;
+  width: 20rem;
+}
+.recipe-items .recipe-card .recipe-name h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.recipe-items .recipe-card ol {
+  padding: 1.5rem;
+}
+.recipe-items .recipe-card ol li {
+  font-size: 1.5rem;
+}
+.recipe-items .recipe-card .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.recipe-items .recipe-card .grid-container div {
+  margin-bottom: 1rem;
+}
+.recipe-items .recipe-card .grid-container div h2 {
+  text-align: center;
+  font-size: 1.5rem;
 }/*# sourceMappingURL=style.css.map */

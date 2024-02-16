@@ -53,8 +53,8 @@ export const searchRecipes = (recipeName: string): Promise<IRecipeResponse> => {
         });
 };
 
-// searchRecipes("margherita")
-//     .then((responseData: IRecipeResponse) =>
-//         mapApiResponseToRecipeList(responseData)
-//     )
-//     .then((recipe) => console.log(recipe));
+searchRecipes("margherita")
+    .then((responseData: IRecipeResponse) =>
+        mapApiResponseToRecipeList(responseData)
+    )
+    .then((recipe) => console.log(recipe));

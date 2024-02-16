@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchRecipes = exports.fetchRecipes = void 0;
+var mapper_1 = require("./mapper");
 var fetchRecipes = function () {
     return fetch("https://dummyjson.com/recipes")
         .then(function (response) {
@@ -27,8 +28,8 @@ var searchRecipes = function (recipeName) {
     });
 };
 exports.searchRecipes = searchRecipes;
-// searchRecipes("margherita")
-//     .then((responseData: IRecipeResponse) =>
-//         mapApiResponseToRecipeList(responseData)
-//     )
-//     .then((recipe) => console.log(recipe));
+(0, exports.searchRecipes)("margherita")
+    .then(function (responseData) {
+    return (0, mapper_1.mapApiResponseToRecipeList)(responseData);
+})
+    .then(function (recipe) { return console.log(recipe); });
