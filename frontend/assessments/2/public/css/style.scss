@@ -123,6 +123,7 @@ body {
                 box-sizing: border-box;
                 .bar-graph {
                     width: 20px;
+                    box-sizing: border-box;
                 }
                 .up {
                     background-color: $pos-light;

@@ -120,12 +120,15 @@ body {
 }
 .main-container .left-main .graph-container .bar-graph-container .bar-graph {
   width: 20px;
+  box-sizing: border-box;
 }
 .main-container .left-main .graph-container .bar-graph-container .up {
   background-color: #b2f2bb;
+  border: 1px solid #2f9e44;
 }
 .main-container .left-main .graph-container .bar-graph-container .down {
   background-color: #ffc9c9;
+  border: 1px solid #e03131;
 }
 .main-container .right-main {
   width: 25%;
