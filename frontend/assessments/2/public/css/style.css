@@ -1,0 +1,164 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap);
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.header {
+  height: 9vh;
+  background-color: #1871c2;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100vw;
+  padding-top: 2rem;
+  box-sizing: border-box;
+  display: flex;
+}
+.main-container .left-main {
+  width: 75%;
+}
+.main-container .left-main .company-info {
+  height: 9vh;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.main-container .left-main .company-info .logo-container {
+  border: 1px solid black;
+  display: flex;
+  padding: 6px 1rem;
+  width: 16rem;
+}
+.main-container .left-main .company-info .logo-container .logo {
+  width: 5rem;
+}
+.main-container .left-main .company-info .logo-container h2 {
+  margin: auto;
+  padding-left: 8px;
+  font-size: 3rem;
+}
+.main-container .left-main .company-info .price-container {
+  display: flex;
+  width: 20rem;
+  border: 1px solid black;
+  justify-content: space-evenly;
+  padding: 16px 0.7rem;
+}
+.main-container .left-main .company-info .price-container h2 {
+  font-size: 3rem;
+}
+.main-container .left-main .company-info .price-container h3 {
+  margin-top: auto;
+}
+.main-container .left-main .company-info .price-container .up {
+  color: #2f9e44;
+}
+.main-container .left-main .company-info .price-container .down {
+  color: #e03131;
+}
+.main-container .left-main .company-info .quantity-input {
+  font-size: 1.5rem;
+  width: 10rem;
+  padding-left: 1.2rem;
+  box-sizing: border-box;
+}
+.main-container .left-main .company-info .buy-btn {
+  width: 8rem;
+  background-color: #b2f2bb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #2f9e44;
+  cursor: pointer;
+}
+.main-container .left-main .company-info .buy-btn h2 {
+  font-size: 2rem;
+  color: #2f9e44;
+}
+.main-container .left-main .company-info .sell-btn {
+  cursor: pointer;
+  width: 8rem;
+  background-color: #ffc9c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e03131;
+}
+.main-container .left-main .company-info .sell-btn h2 {
+  font-size: 2rem;
+  color: #e03131;
+}
+.main-container .left-main .graph-container {
+  position: relative;
+  width: 1101px;
+  height: 500px;
+  border: 1px solid black;
+  margin: 2rem 2.7rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.main-container .left-main .graph-container .item {
+  border: 1px dotted black;
+  opacity: 0.5;
+}
+.main-container .left-main .graph-container .bar-graph-container {
+  position: absolute;
+  display: flex;
+  align-items: end;
+  height: 500px;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+.main-container .left-main .graph-container .bar-graph-container .bar-graph {
+  width: 20px;
+}
+.main-container .left-main .graph-container .bar-graph-container .up {
+  background-color: #b2f2bb;
+}
+.main-container .left-main .graph-container .bar-graph-container .down {
+  background-color: #ffc9c9;
+}
+.main-container .right-main {
+  width: 25%;
+  height: auto;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid black;
+}
+.main-container .right-main h1 {
+  font-size: 3rem;
+  padding: 1rem 2rem;
+}
+.main-container .right-main .transaction {
+  border: 1px solid black;
+  margin: 0.5rem 1rem;
+  display: flex;
+}
+.main-container .right-main .transaction .transaction-info {
+  width: 14rem;
+  padding: 1rem 0.5rem;
+}
+.main-container .right-main .transaction .transaction-info h2 {
+  font-size: 2rem;
+}
+.main-container .right-main .transaction .transaction-type {
+  padding: 0;
+}
+.main-container .right-main .transaction .transaction-type h1 {
+  padding: auto 0;
+}
+.main-container .right-main .transaction .transaction-type .Buy {
+  color: #2f9e44;
+}
+.main-container .right-main .transaction .transaction-type .Sell {
+  color: #e03131;
+}/*# sourceMappingURL=style.css.map */

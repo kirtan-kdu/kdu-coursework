@@ -1,0 +1,172 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap);
+
+$blue-color: #1871c2;
+$pos-dark: #2f9e44;
+$pos-light: #b2f2bb;
+$neg-dark: #e03131;
+$neg-light: #ffc9c9;
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.header {
+    height: 9vh;
+    background-color: $blue-color;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+.main-container {
+    width: 100vw;
+    padding-top: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    .left-main {
+        width: 75%;
+        .company-info {
+            height: 9vh;
+            padding: 0 2rem;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            .logo-container {
+                border: 1px solid black;
+                display: flex;
+                padding: 6px 1rem;
+                width: 16rem;
+                .logo {
+                    width: 5rem;
+                }
+                h2 {
+                    margin: auto;
+                    padding-left: 8px;
+                    font-size: 3rem;
+                }
+            }
+            .price-container {
+                display: flex;
+                width: 20rem;
+                border: 1px solid black;
+                justify-content: space-evenly;
+                padding: 16px 0.7rem;
+                h2 {
+                    font-size: 3rem;
+                }
+                h3 {
+                    margin-top: auto;
+                }
+                .up {
+                    color: $pos-dark;
+                }
+                .down {
+                    color: $neg-dark;
+                }
+            }
+            .quantity-input {
+                font-size: 1.5rem;
+                width: 10rem;
+                padding-left: 1.2rem;
+                box-sizing: border-box;
+            }
+            .buy-btn {
+                width: 8rem;
+                background-color: $pos-light;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid $pos-dark;
+                cursor: pointer;
+                h2 {
+                    font-size: 2rem;
+                    color: $pos-dark;
+                }
+            }
+            .sell-btn {
+                cursor: pointer;
+                width: 8rem;
+                background-color: $neg-light;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid $neg-dark;
+                h2 {
+                    font-size: 2rem;
+                    color: $neg-dark;
+                }
+            }
+        }
+        .graph-container {
+            position: relative;
+            width: 1101px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 2rem 2.7rem;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            .item {
+                border: 1px dotted black;
+                opacity: 0.5;
+            }
+            .bar-graph-container {
+                position: absolute;
+                display: flex;
+                align-items: end;
+                height: 500px;
+                top: 0;
+                left: 0;
+                box-sizing: border-box;
+                .bar-graph {
+                    width: 20px;
+                }
+                .up {
+                    background-color: $pos-light;
+                }
+                .down {
+                    background-color: $neg-light;
+                }
+            }
+        }
+    }
+
+    .right-main {
+        width: 25%;
+        height: auto;
+        margin-right: 2rem;
+        margin-bottom: 2rem;
+        border: 1px solid black;
+        h1 {
+            font-size: 3rem;
+            padding: 1rem 2rem;
+        }
+        .transaction {
+            border: 1px solid black;
+            margin: 0.5rem 1rem;
+            display: flex;
+            .transaction-info {
+                width: 14rem;
+                padding: 1rem 0.5rem;
+                h2 {
+                    font-size: 2rem;
+                }
+            }
+            .transaction-type {
+                padding: 0;
+                h1 {
+                    padding: auto 0;
+                }
+                .Buy {
+                    color: $pos-dark;
+                }
+                .Sell {
+                    color: $neg-dark;
+                }
+            }
+        }
+    }
+}
