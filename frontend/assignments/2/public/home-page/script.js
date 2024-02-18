@@ -268,6 +268,7 @@ const addNewUser = (userDetails) => {
 
     const newProfile = document.createElement("div");
     newProfile.classList.add("profile")
+    newProfile.classList.add("selected-profile")
     const userImage = document.createElement("img");
     if(userDetails == "kirtan")userImage.src = "./static/2.png";
     else userImage.src = "./static/1.png"
