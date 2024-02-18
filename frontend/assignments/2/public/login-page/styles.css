@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+}
+
+.main-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  width: 26rem;
+}
+.main-container .main-heading {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 3rem;
+  justify-content: space-around;
+}
+.main-container .main-heading h1 {
+  font-size: 4rem;
+}
+.main-container .main-heading svg {
+  width: 4rem;
+  fill: white;
+}
+.main-container input {
+  width: 100%;
+  border: 3px solid #1d9bf0;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  height: 3rem;
+  padding: 0 1rem;
+  font-size: 2rem;
+  color: white;
+  background-color: black;
+}
+.main-container button {
+  background-color: #1d9bf0;
+  border: none;
+  width: 28rem;
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.main-container .invalid {
+  border-color: red;
+}
+.main-container #invalid-message {
+  display: none;
+  margin-top: -0.5rem;
+  color: red;
+  font-weight: 300;
+}
+.main-container ::-moz-placeholder {
+  padding-top: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+.main-container ::placeholder {
+  padding-top: 0;
+  font-size: 1.2rem;
+  color: white;
+}/*# sourceMappingURL=styles.css.map */

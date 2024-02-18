@@ -1,0 +1,456 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@900&display=swap");
+html {
+  background-color: black;
+  color: #e7e9ea;
+}
+
+body {
+  font-size: large;
+  font-family: "Open Sans", sans-serif;
+  width: 100vw;
+}
+
+.navigation-section {
+  margin-left: 12rem;
+  padding-top: 0.9rem;
+  padding-left: 0.9rem;
+  height: 100vh;
+  position: fixed;
+  width: 21.6rem;
+  border-right: 2px solid #2b2f32;
+}
+.navigation-section .x-icon {
+  width: 1.8rem;
+  padding-left: 0.8181818182rem;
+}
+.navigation-section .x-icon path {
+  fill: #e7e9ea;
+}
+.navigation-section .messages-field {
+  cursor: pointer;
+}
+.navigation-section .nav-fields {
+  padding-left: 1.8rem;
+}
+.navigation-section .nav-fields div {
+  display: flex;
+  margin: 1.26rem 0;
+  position: relative;
+}
+.navigation-section .nav-fields div .blue-dot {
+  width: 0.36rem;
+  height: 0.36rem;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #1d9bf0;
+  top: -70%;
+  left: 8%;
+}
+.navigation-section .nav-fields div h3 {
+  font-size: 1.4rem;
+  margin: auto 0;
+  font-weight: 900;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 0.6363636364rem;
+}
+.navigation-section .nav-fields div svg {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+.navigation-section .nav-fields div svg path {
+  fill: #e7e9ea;
+}
+.navigation-section .nav-fields .gork-field,
+.navigation-section .nav-fields .bookmark-field,
+.navigation-section .nav-fields .profile-field {
+  padding-top: 5px;
+}
+.navigation-section .post-btn {
+  background-color: #1d9bf0;
+  border: none;
+  width: 88%;
+  margin-top: 10px;
+  padding: 0.546rem 0.2692307692rem;
+  font-size: 1.4rem;
+  border-radius: 1.8rem;
+  color: #e7e9ea;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 900;
+}
+.navigation-section .user-profile {
+  width: auto;
+  display: flex;
+  margin-top: 4.68rem;
+  padding-bottom: 0.784rem;
+  padding-left: 0.9rem;
+}
+.navigation-section .user-profile .left-profile {
+  margin: auto 0;
+}
+.navigation-section .user-profile .left-profile img {
+  width: 3.6rem;
+  border-radius: 50%;
+}
+.navigation-section .user-profile .name-profile {
+  margin: 0 0.9rem;
+  margin-right: 2.1rem;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 900;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+.navigation-section .user-profile .name-profile h3 {
+  color: #5a5e63;
+}
+.navigation-section .user-profile .more-profile {
+  margin: auto 0;
+}
+.navigation-section .user-profile .more-profile svg path {
+  font-size: 3.6rem;
+}
+
+.section-wrapper {
+  margin-left: 35rem;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.tweet-box {
+  display: flex;
+  padding: 0.9rem;
+  padding-bottom: 0.6666666667rem;
+  width: 45rem;
+  height: -moz-max-content;
+  height: max-content;
+  border-top: 2px solid #2b2f32;
+  border-bottom: 2px solid #2b2f32;
+}
+.tweet-box .left-tweet-box img {
+  width: 2.8rem;
+  border-radius: 50%;
+}
+.tweet-box .right-tweet-box {
+  width: 100%;
+  padding-top: 0.14rem;
+  padding-left: 0.35rem;
+}
+.tweet-box .right-tweet-box input {
+  background-color: black;
+  border: none;
+  padding-bottom: 6.3rem;
+  width: 100%;
+  color: #e7e9ea;
+}
+.tweet-box .right-tweet-box input::-moz-placeholder {
+  font-size: 1.1612903226rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.tweet-box .right-tweet-box input,
+.tweet-box .right-tweet-box input::placeholder {
+  font-size: 1.1612903226rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.tweet-box .right-tweet-box .tweet-box-icons {
+  display: flex;
+  justify-content: space-between;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div {
+  margin: auto 0;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div svg {
+  width: 1.4rem;
+  margin-right: 0.7rem;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div svg path {
+  fill: #1d9bf0;
+}
+.tweet-box .right-tweet-box .tweet-box-icons div svg .inactive-icon {
+  fill: #11486e;
+}
+.tweet-box .right-tweet-box .tweet-box-icons .tweet-btn {
+  background-color: #124e78;
+  border: none;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  color: #e7e9ea;
+  border-radius: 1.8rem;
+  font-weight: 900;
+}
+
+.post {
+  display: flex;
+  padding: 0.7rem;
+  padding-bottom: 0.7rem;
+  width: 45rem;
+  border-top: 2px solid #2b2f32;
+}
+.post .left-post-box img {
+  width: 3.5rem;
+  border-radius: 50%;
+}
+.post .right-post-box {
+  width: 100%;
+  padding-left: 0.7rem;
+  padding-top: 0.35rem;
+}
+.post .right-post-box .post-title {
+  display: flex;
+}
+.post .right-post-box .post-title h3 {
+  margin-right: 0.7rem;
+  font-size: 1.26rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.post .right-post-box .post-title .user-name {
+  color: #5a5e63;
+  font-size: 1.4rem;
+}
+.post .right-post-box .post-content {
+  padding-top: 0.7rem;
+  font-size: 1.26rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+.post .right-post-box .post-icons {
+  margin-top: 0.9rem;
+  display: flex;
+  margin-bottom: 4px;
+}
+.post .right-post-box .post-icons div {
+  display: flex;
+}
+.post .right-post-box .post-icons div h1 {
+  margin: auto 0.7rem;
+  color: #5a5e63;
+}
+.post .right-post-box .post-icons div svg {
+  width: 1.75rem;
+}
+.post .right-post-box .post-icons div svg path {
+  fill: #5a5e63;
+}
+.post .right-post-box .post-icons div .unlike-post path {
+  fill: #f91880;
+}
+.post .right-post-box .post-icons div .unlike-post .like-count {
+  color: #f91880;
+}
+.post .right-post-box .post-icons .info-icons {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.post .right-post-box .post-icons .download-icon {
+  margin-left: 0.7rem;
+}
+
+.chat-section {
+  opacity: 0;
+  display: flex;
+  margin-left: 34.5rem;
+  box-sizing: border-box;
+}
+.chat-section .chat-profiles {
+  width: 65rem;
+  border-right: 2px solid #2b2f32;
+  height: 100vh;
+}
+.chat-section .chat-profiles .profile-heading {
+  font-size: 1.26rem;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #2b2f32;
+}
+.chat-section .chat-profiles .profile {
+  display: flex;
+  height: 5rem;
+  border-bottom: 2px solid #2b2f32;
+}
+.chat-section .chat-profiles .profile img {
+  margin: auto 0;
+  margin-left: 1rem;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+}
+.chat-section .chat-profiles .profile h1 {
+  margin: auto 0;
+  margin-left: 1rem;
+  margin-right: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.chat-section .chat-profiles .profile h3 {
+  color: #5a5e63;
+  margin: auto 0;
+  font-size: 1.4rem;
+}
+.chat-section .chat-profiles .selected-profile {
+  background-color: rgba(255, 255, 255, 0.218);
+}
+.chat-section .chat-profile {
+  width: 100%;
+  position: relative;
+}
+.chat-section .chat-profile h1 {
+  font-size: 1.4rem;
+  padding: 1rem;
+  border-bottom: 2px solid #2b2f32;
+}
+.chat-section .chat-profile .chat-messages {
+  padding-top: 0.5rem;
+}
+.chat-section .chat-profile .chat-messages .chat-message {
+  background-color: #1d9bf0;
+  font-size: 1.19rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  margin: 0.5rem;
+  font-weight: 600;
+  width: -moz-max-content;
+  width: max-content;
+}
+.chat-section .chat-profile .chat-messages .yours {
+  margin-left: auto;
+  border-bottom-right-radius: 0;
+}
+.chat-section .chat-profile .chat-messages .others {
+  border-bottom-left-radius: 0;
+  margin-right: auto;
+}
+.chat-section .chat-profile .input-message {
+  top: 92%;
+  left: 5%;
+  position: absolute;
+}
+.chat-section .chat-profile .input-message input {
+  background-color: #2b2f32;
+  border: none;
+  padding-left: 1rem;
+  height: 2.5rem;
+  font-size: 1.26rem;
+  width: 30rem;
+  border-radius: 2rem;
+  color: #e7e9ea;
+}
+.chat-section .chat-profile .input-message ::-moz-placeholder {
+  color: white;
+}
+.chat-section .chat-profile .input-message ::placeholder {
+  color: white;
+}
+.chat-section .chat-profile .input-message svg {
+  position: absolute;
+  width: 2rem;
+  right: 2%;
+  top: 10%;
+}
+.chat-section .chat-profile .input-message svg path {
+  fill: #5a5e63;
+}
+
+.hashtags {
+  color: #1d9bf0;
+}
+
+.floating-tweet-box-icon,
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 414px) {
+  .navigation-section,
+  .tweet-box,
+  .posts,
+  .desktop-post-btn {
+    display: none;
+  }
+  .mobile,
+  body {
+    display: block;
+  }
+  .floating-tweet-box-icon {
+    color: #e7e9ea;
+    background-color: #1d9bf0;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: auto 0;
+  }
+  .tweet-box .left-tweet-box {
+    padding-top: 3rem;
+  }
+  .tweet-box .tweet-box-btns {
+    display: flex;
+    justify-content: end;
+    margin-top: -0.6rem;
+    margin-bottom: 1.65rem;
+  }
+  .tweet-box .tweet-box-btns .draft-btn {
+    color: #124e78;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    margin-right: 6rem;
+    margin-top: 1rem;
+  }
+  .tweet-box .tweet-box-btns .post-btn {
+    background-color: #124e78;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+    font-family: "Open Sans", sans-serif;
+    color: #e7e9ea;
+    border-radius: 1.5rem;
+    font-weight: 900;
+  }
+  .tweet-box .tweet-box-tagline {
+    color: #1d9bf0;
+    padding-left: -1.5rem;
+    font-weight: 900;
+    font-family: "Open Sans", sans-serif;
+  }
+  .tweet-box .tweet-box-icons {
+    margin-top: 2rem;
+    margin-left: -3rem;
+    width: 100%;
+  }
+  .tweet-box .tweet-box-icons div {
+    display: flex;
+  }
+  .tweet-box .tweet-box-icons .tweet-btn {
+    display: block;
+    position: relative;
+    top: -14rem;
+    left: 1rem;
+  }
+  .post {
+    width: 24.75rem;
+    padding-right: 1.5rem;
+    border-top: 4px solid black;
+  }
+  .post .left-post-box {
+    padding-left: 4px;
+  }
+  .post .left-post-box img {
+    width: 2.5rem;
+  }
+  .profile-icon {
+    margin: 1.5rem;
+  }
+  .profile-icon img {
+    width: 3rem;
+    border-radius: 50%;
+  }
+  .navigation-section {
+    width: 16.5rem;
+    height: 55.5rem;
+  }
+}/*# sourceMappingURL=style.css.map */

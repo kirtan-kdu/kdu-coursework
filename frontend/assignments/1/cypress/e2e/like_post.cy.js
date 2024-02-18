@@ -40,6 +40,8 @@ describe("Like Post", () => {
     cy.wait(2000);
   };
 
+
+
   /**
    * Function to compare the screenshot of the liked post.
    */
@@ -50,7 +52,32 @@ describe("Like Post", () => {
       .first()
       .find(".likes-count")
       .invoke("text")
+      .then((text) => {
+        const intValue = parseInt(text);
+        return isNaN(intValue) ? 0 : intValue;
+      })
       .as("initialLikeCount");
+
+
+      // Like the post
+    likePost();
+
+
+      // Get the final count of likes on the first post after unliking
+    cy.get(".posts")
+    .children()
+    .first()
+    .find(".likes-count")
+    .invoke("text")
+    .then((text) => {
+      const intValue = parseInt(text);
+      return isNaN(intValue) ? 0 : intValue;
+    })
+    .as("updatedLikeCount");
+
+  // Compare the initial and updated like counts to ensure they have increased
+  cy.get("@initialLikeCount").then((initialCount) => {
+    cy.get("@updatedLikeCount").should("be.gt", initialCount);
 
     // Compare the screenshot of the liked post
     cy.get(".posts")
@@ -58,17 +85,7 @@ describe("Like Post", () => {
       .first()
       .compareSnapshot("provided-liked-post", Cypress.env("TEST_THRESHOLD"));
 
-    // Get the final count of likes on the first post after unliking
-    cy.get(".posts")
-      .children()
-      .first()
-      .find(".likes-count")
-      .invoke("text")
-      .as("updatedLikeCount");
 
-    // Compare the initial and updated like counts to ensure they have increased
-    cy.get("@initialLikeCount").then((initialCount) => {
-      cy.get("@updatedLikeCount").should("be.gt", initialCount);
     });
   };
 
@@ -82,24 +99,28 @@ describe("Like Post", () => {
     // Wait for the unlike to be processed (adjust as needed)
     cy.wait(2000);
 
-    // Compare the screenshot of the post after unliking
-    cy.get(".posts")
-      .children()
-      .first()
-      .compareSnapshot("provided-unliked-post", Cypress.env("TEST_THRESHOLD"));
-
     // Get the final count of likes on the first post after unliking
     cy.get(".posts")
       .children()
       .first()
       .find(".likes-count")
       .invoke("text")
+      .then((text) => {
+        const intValue = parseInt(text);
+        return isNaN(intValue) ? 0 : intValue;
+      })
       .as("finalLikeCount");
 
     // Compare the initial and final like counts to ensure they are the same
     cy.get("@initialLikeCount").then((initialCount) => {
       cy.get("@finalLikeCount").should("eq", initialCount);
     });
+
+    // Compare the screenshot of the post after unliking
+    cy.get(".posts")
+      .children()
+      .first()
+      .compareSnapshot("provided-unliked-post", Cypress.env("TEST_THRESHOLD"));
   };
 
   /**
@@ -117,11 +138,16 @@ describe("Like Post", () => {
       "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding"
     );
 
-    // Like the post
-    likePost();
-
     // Compare screenshots of liked post
     compareLikedPostSnapshot();
+
+    // Post a tweet
+    postTweet(
+      "Coffee in hand, bugs beware. Time to crush some code. #DeveloperLife #Coding"
+    );
+
+    // Like the post
+    likePost();
 
     // Unlike the post and compare screenshots
     unlikePostAndCompareSnapshot();

@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "user_name": "kirtan",
+        "user_email_id": "kirtan@gmail.com",
+        "password": "kirtan",
+        "profile_url": ""
+    },
+    {
+        "id": "2",
+        "user_name": "rishav",
+        "user_email_id": "rishav@gmail.com",
+        "password": "rishav",
+        "profile_url": ""
+    },
+    {
+        "id": "3",
+        "user_name": "nitesh",
+        "user_email_id": "nitesh@gmail.com",
+        "password": "nitesh",
+        "profile_url": ""
+    }
+]

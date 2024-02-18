@@ -1,0 +1,377 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@900&display=swap");
+
+$black-bg-color: black;
+$grey-border: #2b2f32;
+$grey-font: #5a5e63;
+$white-color: #e7e9ea;
+$icon-size: 1.8rem;
+$font-size: 0.7rem;
+$font-family: "Open Sans", sans-serif;
+$btn-color: #1d9bf0;
+$inactive-btn-color: #124e78;
+$inactive-icon-color: #11486e;
+$liked-icon: #f91880;
+
+html {
+  background-color: $black-bg-color;
+  color: $white-color;
+}
+body {
+  padding-left: $icon-size;
+  display: flex;
+  font-size: large;
+  font-family: $font-family;
+}
+
+.navigation-section {
+  padding-top: $icon-size / 2;
+  padding-left: $icon-size / 2;
+  height: 100%;
+  width: 10 * $icon-size;
+  border-right: 2px solid $grey-border;
+
+  .x-icon {
+    width: $icon-size;
+    padding-left: $icon-size / 2.2;
+    path {
+      fill: $white-color;
+    }
+  }
+
+  .nav-fields {
+    padding-left: $icon-size;
+
+    div {
+      display: flex;
+      margin: $font-size * 1.8 0;
+      position: relative;
+
+      .blue-dot {
+        width: $icon-size / 5;
+        height: $icon-size / 5;
+        border-radius: 50%;
+        position: absolute;
+        background-color: $btn-color;
+        top: -70%;
+        left: 8%;
+      }
+
+      h3 {
+        font-size: $font-size * 2;
+        margin: auto 0;
+        font-weight: 900;
+        font-family: $font-family;
+        margin-left: $font-size / 1.1;
+      }
+      svg {
+        height: $icon-size;
+        width: $icon-size;
+        path {
+          fill: $white-color;
+        }
+      }
+    }
+    .gork-field,
+    .bookmark-field,
+    .profile-field {
+      padding-top: 5px;
+    }
+  }
+
+  .post-btn {
+    background-color: $btn-color;
+    border: none;
+    width: 88%;
+    margin-top: -10px;
+    padding: $font-size * 0.78 $font-size / 2.6;
+    font-size: $font-size;
+    border-radius: $icon-size;
+    color: $white-color;
+    font-family: $font-family;
+    font-weight: 900;
+  }
+
+  .user-profile {
+    width: auto;
+    display: flex;
+    margin-top: 2.6 * $icon-size;
+    padding-bottom: $font-size * 1.12;
+    padding-left: $icon-size / 2;
+    .left-profile {
+      margin: auto 0;
+      img {
+        width: $font-size * 2;
+        border-radius: 50%;
+      }
+    }
+    .name-profile {
+      margin: 0 $icon-size / 2;
+      margin-right: $font-size * 3;
+      line-height: $icon-size / $font-size;
+      font-size: $icon-size / 2;
+      font-weight: 900;
+      font-family: $font-family;
+      h3 {
+        color: $grey-font;
+      }
+    }
+    .more-profile {
+      margin: auto 0;
+      svg {
+        path {
+          font-size: $icon-size * 2;
+        }
+      }
+    }
+  }
+}
+
+.tweet-box {
+  display: flex;
+  padding: $icon-size/2;
+  padding-bottom: $icon-size/2.7;
+  width: 19 * $icon-size;
+  height: max-content;
+  border-top: 2px solid $grey-border;
+  border-bottom: 2px solid $grey-border;
+
+  .left-tweet-box {
+    img {
+      width: $font-size * 4;
+      border-radius: 50%;
+    }
+  }
+  .right-tweet-box {
+    width: 100%;
+    padding-top: $font-size / 5;
+    padding-left: $font-size / 2;
+    input {
+      background-color: $black-bg-color;
+      border: none;
+      padding-bottom: $icon-size * 3.5;
+      width: 100%;
+      color: $white-color;
+    }
+    input,
+    input::placeholder {
+      font-size: $icon-size / 1.55;
+      font-family: $font-family;
+      font-weight: 600;
+    }
+    .tweet-box-icons {
+      display: flex;
+      justify-content: space-between;
+      div {
+        margin: auto 0;
+        svg {
+          width: $font-size * 2;
+          margin-right: $font-size;
+          path {
+            fill: $btn-color;
+          }
+          .inactive-icon {
+            fill: $inactive-icon-color;
+          }
+        }
+      }
+      .tweet-btn {
+        background-color: $inactive-btn-color;
+        border: none;
+        padding: $font-size/ 2 $font-size;
+        font-size: $icon-size / 2;
+        font-family: $font-family;
+        color: $white-color;
+        border-radius: $icon-size;
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+.post {
+  display: flex;
+  padding: $font-size;
+  padding-bottom: $font-size;
+  width: 19.5 * $icon-size;
+  border-top: 2px solid $grey-border;
+  .left-post-box {
+    img {
+      width: $font-size * 4;
+      border-radius: 50%;
+    }
+  }
+  .right-post-box {
+    padding-left: $font-size;
+    padding-top: $font-size / 3;
+
+    .post-title {
+      display: flex;
+      h3 {
+        margin-right: $font-size / 3;
+        font-size: $font-size;
+        font-family: $font-family;
+        font-weight: 600;
+      }
+      .user-name {
+        color: $grey-font;
+        font-size: $icon-size / 2.2;
+      }
+    }
+    .post-content {
+      padding-top: $font-size / 2;
+      font-size: $icon-size / 1.9;
+      font-family: $font-family;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+    }
+    .post-icons {
+      margin-top: $icon-size / 2.7;
+      display: flex;
+      margin-bottom: 4px;
+      div {
+        display: flex;
+
+        h1 {
+          margin: auto $font-size;
+          color: $grey-font;
+        }
+        svg {
+          width: $font-size * 2;
+          path {
+            fill: $grey-font;
+          }
+        }
+
+        .unlike-post {
+          path {
+            fill: $liked-icon;
+          }
+          .like-count {
+            color: $liked-icon;
+          }
+        }
+      }
+      .info-icons {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+      .download-icon {
+        margin-left: $font-size;
+      }
+    }
+  }
+}
+
+.hashtags {
+  color: $btn-color;
+}
+
+.floating-tweet-box-icon,
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 414px) {
+  $icon-size: 1.5rem;
+  $font-size: 1rem;
+
+  .navigation-section,
+  .tweet-box,
+  .posts,
+  .desktop-post-btn {
+    display: none;
+  }
+
+  .mobile,
+  body {
+    display: block;
+  }
+
+  .floating-tweet-box-icon {
+    color: $white-color;
+    background-color: $btn-color;
+    width: $icon-size;
+    height: $icon-size;
+    margin: auto 0;
+  }
+
+  .tweet-box {
+    .left-tweet-box {
+      padding-top: $icon-size * 2;
+    }
+
+    .tweet-box-btns {
+      display: flex;
+      justify-content: end;
+      margin-top: -0.6 * $font-size;
+      margin-bottom: $icon-size * 1.1;
+      .draft-btn {
+        color: $inactive-btn-color;
+        font-size: $font-size;
+        background-color: transparent;
+        border: none;
+        font-weight: 900;
+        margin-right: 4 * $icon-size;
+        margin-top: $font-size;
+      }
+
+      .post-btn {
+        background-color: $inactive-btn-color;
+        border: none;
+        padding: $font-size/ 2 $font-size * 1.2;
+        font-size: $icon-size / 2;
+        font-family: $font-family;
+        color: $white-color;
+        border-radius: $icon-size;
+        font-weight: 900;
+      }
+    }
+
+    .tweet-box-tagline {
+      color: $btn-color;
+      padding-left: -1 * $icon-size;
+      font-weight: 900;
+      font-family: $font-family;
+    }
+    .tweet-box-icons {
+      div {
+        display: flex;
+      }
+      margin-top: $font-size * 2;
+      margin-left: -2 * $icon-size;
+      width: 100%;
+      .tweet-btn {
+        display: block;
+        position: relative;
+        top: -14 * $font-size;
+        left: $font-size;
+      }
+    }
+  }
+
+  .post {
+    width: 16.5 * $icon-size;
+    padding-right: $icon-size;
+    border-top: 4px solid $black-bg-color;
+    .left-post-box {
+      padding-left: 4px;
+      img {
+        width: 2.5 * $font-size;
+      }
+    }
+  }
+
+  .profile-icon {
+    margin: $icon-size;
+    img {
+      width: 2 * $icon-size;
+      border-radius: 50%;
+    }
+  }
+
+  .navigation-section {
+    width: 11 * $icon-size;
+    height: 37 * $icon-size;
+  }
+}
