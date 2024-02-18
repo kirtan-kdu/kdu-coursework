@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "profileImgSrc": "http://127.0.0.1:5500/public/home-page/static/1.png",
+        "name": "Nitesh Gupta",
+        "username": "@nit_hck",
+        "time": "17/2/2024 17:45",
+        "caption": "Assignment was a real fun was't it??"
+    },
+    {
+        "id": "2",
+        "profileImgSrc": "http://127.0.0.1:5500/public/home-page/static/2.png",
+        "name": "Kirtan Shah",
+        "username": "@kirtan",
+        "time": "16/2/2024 10:00",
+        "caption": "Good Morning guys! "
+    },
+    {
+        "id": "3",
+        "profileImgSrc": "http://127.0.0.1:5500/public/home-page/static/2.png",
+        "name": "Kirtan Shah",
+        "username": "@kirtan",
+        "time": "17/2/2024 12:00",
+        "caption": "Am i the only one who's posting here??"
+    },
+    {
+        "id": "4",
+        "profileImgSrc": "http://127.0.0.1:5500/public/home-page/static/3.jpeg",
+        "name": "Rishav Chakraborty",
+        "username": "@rishav",
+        "time": "18/12/2023 03:30",
+        "caption": "Check out this amazing video!",
+        "fileType": "video",
+        "fileSrc": "http://127.0.0.1:5500/public/home-page/static/video.mp4"
+    },
+    {
+        "id": "5",
+        "profileImgSrc": "http://127.0.0.1:5500/public/home-page/static/2.png",
+        "name": "Kirtan Shah",
+        "username": "@kirtan",
+        "time": "17/2/2024 19:41",
+        "caption": "Hey everyone How's KDU Going?"
+    }
+]
