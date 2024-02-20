@@ -10,11 +10,14 @@ interface ISkillProps {
 }
 function SkillContainer({ skills }: ISkillProps) {
     return (
-        <ul className='skills-list'>
-            {skills.map((skillObj) => {
-                return <li key={skillObj.id}>{skillObj.skill}</li>;
-            })}
-        </ul>
+        <div className='skills-list'>
+            <h1>Skills</h1>
+            <ul>
+                {skills.map((skillObj) => {
+                    return <li key={skillObj.id}>{skillObj.skill}</li>;
+                })}
+            </ul>
+        </div>
     );
 }
 

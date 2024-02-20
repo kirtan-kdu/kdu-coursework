@@ -12,11 +12,14 @@ interface IHobbyProp {
 
 function HobbyContainer({ hobbies }: IHobbyProp) {
     return (
-        <ul className='hobby-list'>
-            {hobbies.map((hobbyObj) => {
-                return <li key={hobbyObj.id}>{hobbyObj.hobby}</li>;
-            })}
-        </ul>
+        <div className='hobby-list'>
+            <h1>Hobbies</h1>
+            <ul>
+                {hobbies.map((hobbyObj) => {
+                    return <li key={hobbyObj.id}>{hobbyObj.hobby}</li>;
+                })}
+            </ul>
+        </div>
     );
 }
 
