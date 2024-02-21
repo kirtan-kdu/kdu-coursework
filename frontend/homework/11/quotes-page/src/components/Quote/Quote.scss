@@ -29,6 +29,7 @@ $white-color: #f6f5f5;
     }
     .quote-tag-container {
         text-align: start;
+        padding-top: 2rem;
         .quote-tag {
             background-color: $pink-color;
             border: none;
@@ -37,6 +38,7 @@ $white-color: #f6f5f5;
             padding: 0.6rem 1.5rem;
             font-size: 18px;
             cursor: pointer;
+            margin: 0.5rem;
         }
     }
 }
