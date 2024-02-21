@@ -1,0 +1,35 @@
+$blue-color: #0c359e;
+$pink-color: #ee99c2;
+$skin-color: #ffe3ca;
+$white-color: #f6f5f5;
+
+.main-container {
+    margin: 0;
+    .wrapper {
+        width: 60%;
+        margin: auto;
+    }
+}
+.loading {
+    cursor: progress;
+}
+
+.spinner {
+    margin: 45vh 45vw;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-left-color: darkblue;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
