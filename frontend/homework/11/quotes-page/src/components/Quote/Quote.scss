@@ -1,0 +1,44 @@
+$blue-color: #0c359e;
+$pink-color: #ee99c2;
+$skin-color: #ffe3ca;
+$white-color: #f6f5f5;
+
+.quote-container {
+    background-color: $blue-color;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 32px;
+    padding: 2rem;
+    padding-bottom: 1.5rem;
+    border: none;
+    border-radius: 3rem;
+    margin-bottom: 2rem;
+
+    .quote-author,
+    .quote-dateadded {
+        text-align: end;
+        font-size: 24px;
+        font-weight: 200;
+        padding-bottom: 6px;
+    }
+    .quote-author {
+        font-weight: 600;
+        padding-top: 2rem;
+    }
+    .quote-tag-container {
+        text-align: start;
+        padding-top: 2rem;
+        .quote-tag {
+            background-color: $pink-color;
+            border: none;
+            font-weight: 900;
+            border-radius: 2rem;
+            padding: 0.6rem 1.5rem;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+    }
+}
