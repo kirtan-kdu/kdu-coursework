@@ -9,7 +9,7 @@ export const useStyles = createUseStyles({
         "& .prod-title": {
             fontSize: "2.8rem",
             fontWeight: 500,
-            color: "#2a2a72", // Replacing $blue-color with its value
+            color: "#2a2a72",
             marginTop: "6rem",
         },
         "& .prod-details": {
@@ -35,7 +35,7 @@ export const useStyles = createUseStyles({
                     fontSize: "1.3rem",
                     fontWeight: 600,
                     margin: "1rem  0",
-                    color: "#2a2a72", // Replacing $blue-color with its value
+                    color: "#2a2a72",
                     marginBottom: "2rem",
                 },
                 "& .prod-des": {
@@ -62,12 +62,10 @@ export const useStyles = createUseStyles({
                     borderRadius: "1rem",
                     padding: "1rem",
                     backgroundColor: "#2a2a721f",
-                    color: "#2a2a72", // Replacing $blue-color with its value
+                    color: "#2a2a72",
                     fontSize: "1.4rem",
                 },
             },
         },
     },
 });
-
-// In your component

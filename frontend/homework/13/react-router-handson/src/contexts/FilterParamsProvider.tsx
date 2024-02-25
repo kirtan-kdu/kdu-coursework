@@ -9,8 +9,8 @@ import React, {
 interface IFilterParams {
     searchString: string;
     setSearchString: Dispatch<SetStateAction<string>>;
-    catagoryFilter: string;
-    setCatagoryFilter: Dispatch<SetStateAction<string>>;
+    categoryFilter: string;
+    setCategoryFilter: Dispatch<SetStateAction<string>>;
     sortBy: string;
     setSortBy: Dispatch<SetStateAction<string>>;
 }
@@ -18,8 +18,8 @@ interface IFilterParams {
 export const FilterParamsContext = createContext<IFilterParams>({
     searchString: "",
     setSearchString: () => {},
-    catagoryFilter: "",
-    setCatagoryFilter: () => {},
+    categoryFilter: "",
+    setCategoryFilter: () => {},
     sortBy: "",
     setSortBy: () => {},
 });
@@ -32,19 +32,19 @@ export const FilterParamsProvider = ({
     children,
 }: IFilterParamsProviderProps) => {
     const [searchString, setSearchString] = useState<string>("");
-    const [catagoryFilter, setCatagoryFilter] = useState<string>("");
+    const [categoryFilter, setCategoryFilter] = useState<string>("");
     const [sortBy, setSortBy] = useState<string>("");
 
     const value = useMemo(
         () => ({
             searchString,
             setSearchString,
-            catagoryFilter,
-            setCatagoryFilter,
+            categoryFilter,
+            setCategoryFilter,
             sortBy,
             setSortBy,
         }),
-        [searchString, catagoryFilter, sortBy]
+        [searchString, categoryFilter, sortBy]
     );
 
     return (

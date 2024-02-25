@@ -1,42 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IProduct } from "../../types/Product.type";
 import { useStyles } from "./Product.styles";
+import { ProductListContext } from "../../contexts/ProductListProvider";
 
 const Product = () => {
     const { id } = useParams();
 
     const navigate = useNavigate();
-    const [product, setProduct] = useState<IProduct>();
+    const { productsList } = useContext(ProductListContext);
 
+    const product = productsList.filter((prod) => prod.id == Number(id))[0];
     const classes = useStyles();
 
     const goBackToMainPage = () => {
         navigate(-1);
     };
 
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${id}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-                setProduct(data);
-            })
-            .catch((error) => {
-                console.error(
-                    "There has been a problem with your fetch operation:",
-                    error
-                );
-            });
-    }, [id]);
     return (
         <div className={classes.prodContainer}>
-            <h1 className='prod-title'>{product?.title}</h1>
+            <h1 className='prod-title'>{product.title}</h1>
             <div className='prod-details'>
                 <div className='prod-image-container'>
                     <img
