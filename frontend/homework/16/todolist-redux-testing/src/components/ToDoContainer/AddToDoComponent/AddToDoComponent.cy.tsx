@@ -1,4 +1,3 @@
-import React from "react";
 import AddToDoComponent from "./AddToDoComponent";
 import { Provider } from "react-redux";
 import { store } from "../../../redux/Stores";
