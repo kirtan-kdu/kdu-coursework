@@ -1,0 +1,41 @@
+.todo-list-wrapper {
+    min-height: 15rem;
+}
+
+.todo-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    padding-right: 3rem;
+    margin: 1rem 0;
+    border: 1px solid rgba(128, 128, 128, 0.315);
+    .todo {
+        margin: 1rem;
+        font-size: 24px;
+        font-weight: 400;
+    }
+    #delete-todo {
+        background-color: #dc3545;
+        border: none;
+        height: 2.5rem;
+        width: 2.5rem;
+        font-size: 24px;
+        border-radius: 6px;
+        color: white;
+        font-weight: 900;
+        margin: auto 0;
+    }
+}
+
+.no-todo-container {
+    width: auto;
+    height: 10rem;
+    margin: 4rem;
+    box-sizing: border-box;
+    // border: 2px solid grey;
+    text-align: center;
+    vertical-align: middle;
+    .no-todo-tag {
+        padding: 4rem;
+    }
+}
