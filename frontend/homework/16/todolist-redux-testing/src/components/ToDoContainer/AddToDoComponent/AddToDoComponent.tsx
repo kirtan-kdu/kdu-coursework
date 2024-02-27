@@ -26,7 +26,11 @@ const AddToDoComponent = () => {
                     id='todo-input'
                     onChange={(event) => handleInputchange(event)}
                 />
-                <button disabled={inputValue === ""} onClick={handleSubmit}>
+                <button
+                    className='add-todo-btn'
+                    disabled={inputValue === ""}
+                    onClick={handleSubmit}
+                >
                     Add
                 </button>
             </div>
