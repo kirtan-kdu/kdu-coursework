@@ -1,0 +1,175 @@
+/* General Typography and Colors */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin:   0;
+    padding:   0;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+
+.page-title, .subpage-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c3e50;
+}
+
+/* Header Styles */
+.page-header {
+    background-color: #3498db;
+    color: #fff;
+    padding:   20px   0;
+    text-align: start;
+    vertical-align: middle;
+
+}
+
+#logo{
+    width: 10vh;
+    display: inline;
+
+    margin-left: 2vw;
+}
+
+.page-title{
+    display: inline-block;
+    margin: auto   30vw;
+    position: relative;
+    top: 0%;
+    transform: translateY(-50%);
+}
+
+/* Navigation Styles */
+.primary-navigation {
+    background-color: #fff;
+    border-bottom:   1px solid #eee;
+    padding:   10px   0;
+
+}
+
+.navigation-list {
+    list-style-type: none;
+    margin:  1rem auto;
+    padding:   0;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.navigation-item {
+    float: left;
+    width: 30vw;
+    margin-left:   12vw;
+    background-color:#ddd;
+}
+
+.navigation-item:hover {
+    background-color:#dddddda0;
+
+}
+
+.navigation-link {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding:   14px   16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+
+
+/* Main Content Styles */
+.main-content {
+    padding:   20px;
+}
+
+.quote {
+    margin:   20px   0;
+    font-size:   1.2em;
+    line-height:   1.6;
+}
+
+.fixed-width-text {
+    background-color: #f8f8f8;
+    border:   1px solid #ddd;
+    padding:   10px;
+    border-radius:   3px;
+}
+
+/* Form Styles */
+.contact-form {
+    max-width:   600px;
+    margin:   0 auto;
+}
+
+.contact-form .message-input, .contact-form .radio-option, .contact-form .checkbox-option, .contact-form .dropdown-selector, .contact-form .global-search, .contact-form .password-input, .contact-form .number-input, .contact-form .phone-input, .contact-form .search-input {
+    width:   100%;
+    padding:   12px   20px;
+    margin:   8px   0;
+    box-sizing: border-box;
+    border:   1px solid #ccc;
+    border-radius:   4px;
+}
+
+.contact-form .radio-label, .contact-form .checkbox-label {
+    font-weight: bold;
+}
+
+.contact-form .submit-button, .contact-form .reset-button {
+    background-color: #3498db;
+    color: white;
+    padding:   12px   20px;
+    border: none;
+    border-radius:   4px;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.contact-form .submit-button:hover, .contact-form .reset-button:hover {
+    background-color: #2980b9;
+}
+
+/* Article Styles */
+.image-article img {
+    max-width:   100%;
+    height: auto;
+}
+
+/* Footer Styles */
+.page-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding:   10px   0;
+    position: relative;
+    bottom:   0;
+    left:   0;
+    width:   100%;
+    height:   60px;
+}
+
+/* Responsive Design */
+@media (max-width:   800px) {   
+    .navigation-item {
+        float: none;
+        width:   100%;
+    }
+
+    .navigation-link {
+        display: block;
+        text-align: left;
+    }
+}
+
+#random-image{
+    width: 1400px;
+    height: 600px;
+    margin: auto;
+}
+
+

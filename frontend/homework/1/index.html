@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hands On  1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="page-header">
+        <img src="./public/cssLogo-removebg-preview.png" alt="logo" id="logo">
+        <h1 class="page-title">Frontend Hands on: 1</h1>
+    </header>
+
+    <nav aria-label="primary-navigation" class="primary-navigation">
+        <ul class="navigation-list">
+            <li class="navigation-item"><a class="navigation-link" href="#default">This one is self or default</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="#new" target="_blank">This one will open new window</a></li>
+        </ul>
+        <ol class="navigation-list">
+            <li class="navigation-item"><a class="navigation-link" href="#parent" target="_parent">This one is parent</a></li>
+            <li class="navigation-item"><a class="navigation-link" href="#top" target="_parent">This one is top</a></li>
+        </ol>
+    </nav>
+
+    <main class="main-content">
+        <blockquote class="quote" cite="https://www.lipsum.com">
+            <aside> Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</aside>
+        </blockquote>
+
+        <pre class="fixed-width-text">
+            Text in a <b><u>pre tag</u></b>                             <i>As you can see,</i></aside>
+            is displayed in a <s>fixed-width</s>
+            font, and it preserves                                                  <sub>It can be here also....</sub>
+            both      spaces and
+            line breaks                                                                                                                 <sup>here too!</sup>
+        </pre>
+
+        <form id="contact-form" class="contact-form" onsubmit="setTimeout(function () { window.location.reload(); },  1);" method="post">
+            <textarea id="message-input" class="message-input" placeholder="Enter your message" tabindex="1"></textarea>
+            <p class="form-instruction">Choose an option:</p>
+            <input type="radio" id="option-one" class="radio-option" name="options" value="option1" tabindex="2">
+            <label for="option-one" class="radio-label">Doesn't matter  1</label><br>
+            <input type="radio" id="option-two" class="radio-option" name="options" value="option2" tabindex="3">
+            <label for="option-two" class="radio-label">Doesn't matter  2</label><br>
+            <p class="form-instruction">Select a checkbox:</p>
+            <input type="checkbox" id="checkbox-one" class="checkbox-option" name="checkbox1" value="Check1" tabindex="4">
+            <label for="checkbox-one" class="checkbox-label">Whatever</label><br>
+            <input type="checkbox" id="checkbox-two" class="checkbox-option" name="checkbox2" value="Check2" tabindex="5">
+            <label for="checkbox-two" class="checkbox-label">Again whatever</label><br>
+            
+            <select id="dropdown-selector" class="dropdown-selector" name="dropdown" tabindex="6">
+                <option value="option1">Option  1</option>
+                <option value="option2">Option  2</option>
+            </select>
+            <input type="search" id="global-search" class="global-search" name="gsearch">
+
+            <p class="form-instruction">Password:</p>
+            <input type="password" id="password-input" class="password-input" name="password" tabindex="10" required>
+            <p class="form-instruction">Number:</p>
+            <input type="number" id="number-input" class="number-input" name="number" tabindex="7">
+            <p class="form-instruction">Phone:</p>
+            <input type="tel" id="phone-input" class="phone-input" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" tabindex="8">
+            <p class="form-instruction">Search:</p>
+            <input type="search" id="search-input" class="search-input" name="search" tabindex="9">
+            <input type="submit" value="Submit" class="submit-button" tabindex="11">
+            <input type="reset" value="Reset" class="reset-button" tabindex="12">
+        </form>
+
+        <article class="image-article">
+            <h2 class="article-title">Here is a random image for you</h2>
+            <p class="article-description">Submit the form to get new image</p>
+            <iframe id="random-image" class="random-image" src="https://source.unsplash.com/random/1400x600?sig=${Math.random()}" title="Random image generator"></iframe>
+        </article>
+    </main>
+
+    <footer class="page-footer">
+        <p class="copyright-notice">&copy; No copywrite, copy whatever you want!</p>
+    </footer>
+</body>
+</html>
