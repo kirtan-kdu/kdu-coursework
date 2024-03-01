@@ -1,0 +1,42 @@
+$blue-color: #1971c2;
+$white-color: #dbe8f5;
+
+.navbar-container {
+    margin: 1rem;
+    border-radius: 10px;
+    display: flex;
+    height: 5rem;
+    justify-content: space-between;
+    background-color: $blue-color;
+    color: $white-color;
+
+    .left-navbar {
+        display: flex;
+
+        .stockmarket-logo {
+            border-radius: 10px;
+        }
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: auto;
+            width: auto;
+        }
+    }
+
+    .right-navbar {
+        display: flex;
+        font-size: 1.75rem;
+        font-weight: 600;
+
+        .nav-link {
+            text-decoration: none;
+            margin: auto;
+            .nav-link-text {
+                color: $white-color;
+                font-weight: 400;
+                margin-right: 2rem;
+            }
+        }
+    }
+}
