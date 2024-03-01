@@ -2,6 +2,7 @@ import { createUseStyles } from "react-jss";
 import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../redux/RoomTypeListStore";
 import { setEndDate, setStartDate } from "../redux/Slice/CurrentRoomDetails";
+import { useEffect } from "react";
 
 const styles = {
     SelectDatesContainer: {
@@ -38,14 +39,24 @@ const DateComponent = () => {
         (state: RootState) => state.currRoomDetailReducer
     );
 
+    useEffect(() => {
+        console.log("rendered dates: ", endDate);
+    }, [endDate]);
+
     const onStartDateChangeHandler = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         reduxDispatch(setStartDate(event.target.value));
-        if (
+        console.log(
             new Date(event.target.value).getTime() > new Date(endDate).getTime()
-        )
-            setEndDate("");
+        );
+        if (
+            endDate !== "" &&
+            new Date(event.target.value).getTime() > new Date(endDate).getTime()
+        ) {
+            console.log("endDate is set to empty");
+            reduxDispatch(setEndDate(""));
+        }
     };
 
     const onEndDateChangeHandler = (

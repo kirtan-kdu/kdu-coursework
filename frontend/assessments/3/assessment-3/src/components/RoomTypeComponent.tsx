@@ -52,7 +52,6 @@ const RoomTypeComponent = () => {
         reduxDispatch(getRoomTypeListThunk());
     }, []);
 
-    console.log(roomTypeList, "roomtype");
     const classes = useStyles();
     return (
         <div className={classes.RoomTypeContainer}>

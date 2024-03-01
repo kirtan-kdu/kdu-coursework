@@ -25,6 +25,7 @@ const CurrentRoomDetailSlice = createSlice({
         },
         setEndDate: (state, action: PayloadAction<string>) => {
             state.endDate = action.payload;
+            console.log(state.endDate, "enddate is set to ");
         },
         setRoomId: (state, action: PayloadAction<number>) => {
             state.roomId = action.payload;
