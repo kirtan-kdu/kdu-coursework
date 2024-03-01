@@ -8,6 +8,7 @@ import { setRoomId } from "../redux/Slice/CurrentRoomDetails";
 const styles = {
     RoomTypeContainer: {
         marginTop: "2rem",
+        width: "80vw",
     },
     SelectRoomTypeTag: {
         backgroundColor: "#F08A5D",
@@ -15,16 +16,17 @@ const styles = {
         borderRadius: "1rem",
         fontSize: "1.5rem",
         color: "white",
-        width: "80vw",
     },
     RoomTypeBtnContainer: {
         display: "flex",
         marginTop: "1rem",
+        flexWrap: "wrap",
         "& button": {
             margin: "0 1rem",
             padding: "1rem 2rem",
             fontSize: "1.1rem",
             borderRadius: "1rem",
+            width: "18rem",
         },
     },
     SelectedRoom: {

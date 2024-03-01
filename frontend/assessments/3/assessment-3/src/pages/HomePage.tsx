@@ -24,14 +24,14 @@ const styles = {
         border: "none",
         borderRadius: "1rem",
         alignSelf: "start",
-        marginLeft: "8rem",
+        marginLeft: "10vw",
         fontSize: "1.2rem",
     },
     finalConstTag: {
         fontSize: "2rem",
         alignSelf: "start",
         padding: "2rem 0",
-        marginLeft: "8rem",
+        marginLeft: "10vw",
     },
 };
 const useStyles = createUseStyles(styles);

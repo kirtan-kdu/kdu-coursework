@@ -6,6 +6,7 @@ import { setEndDate, setStartDate } from "../redux/Slice/CurrentRoomDetails";
 const styles = {
     SelectDatesContainer: {
         marginTop: "2rem",
+        width: "80vw",
     },
     SelectDatesTag: {
         backgroundColor: "#F08A5D",
@@ -13,7 +14,6 @@ const styles = {
         borderRadius: "1rem",
         fontSize: "1.5rem",
         color: "white",
-        width: "80vw",
     },
     DatesContainer: {
         display: "flex",
@@ -42,6 +42,10 @@ const DateComponent = () => {
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         reduxDispatch(setStartDate(event.target.value));
+        if (
+            new Date(event.target.value).getTime() > new Date(endDate).getTime()
+        )
+            setEndDate("");
     };
 
     const onEndDateChangeHandler = (
@@ -66,6 +70,8 @@ const DateComponent = () => {
                     value={endDate}
                     placeholder='End date'
                     type='date'
+                    disabled={startDate === ""}
+                    min={startDate}
                     onChange={(event) => onEndDateChangeHandler(event)}
                 />
             </div>

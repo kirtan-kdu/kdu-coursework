@@ -6,6 +6,7 @@ import { addAddons } from "../redux/Slice/CurrentRoomDetails";
 const styles = {
     AddOnsContainer: {
         margin: "2rem",
+        width: "80vw",
     },
     SelectAddOnsTag: {
         backgroundColor: "#F08A5D",
@@ -13,7 +14,6 @@ const styles = {
         borderRadius: "1rem",
         fontSize: "1.5rem",
         color: "white",
-        width: "80vw",
     },
     AddOnsBtnContainer: {
         display: "flex",
