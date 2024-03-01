@@ -1,0 +1,21 @@
+.todos div {
+  display: flex;
+  margin: 1rem;
+}
+
+.todos {
+  margin: 2rem;
+}
+
+.todos div h3 {
+  margin: 1rem;
+}
+
+.todo-container {
+  margin: 2rem 30rem;
+}
+
+.delete-todo {
+  height: 2rem;
+  margin: auto 1rem;
+}
