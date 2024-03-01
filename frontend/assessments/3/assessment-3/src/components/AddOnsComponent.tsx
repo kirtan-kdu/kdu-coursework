@@ -1,4 +1,3 @@
-import React from "react";
 import { createUseStyles } from "react-jss";
 import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../redux/RoomTypeListStore";
