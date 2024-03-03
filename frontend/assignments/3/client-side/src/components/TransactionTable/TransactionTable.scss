@@ -1,0 +1,46 @@
+$black-border: #717171;
+$grey-color: #e9ecef;
+
+.transaction-table-section {
+    width: 55vw;
+    .transaction-row {
+        border-bottom: 2px solid $black-border;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+        padding: 1.5rem 0;
+        justify-self: flex-end;
+        h1 {
+            font-weight: 400;
+        }
+        .transaction-stock-name {
+            width: 25rem;
+        }
+        .transaction-stock-symbol {
+            width: 5rem;
+        }
+        .transaction-stock-price {
+            width: 8rem;
+            text-align: end;
+        }
+        .transaction-stock-status-container {
+            width: 10rem;
+            margin-left: 5rem;
+            display: flex;
+            justify-content: space-between;
+            margin-right: 5px;
+
+            h1 {
+                text-align: end;
+                width: 7rem;
+            }
+            .transaction-stock-status {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: red;
+                margin: auto 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+$grey-color: #e9ecef;
+$black-border: #5b6065;
+$blue-color: #2d7dc6;
+
+.transaction-filter-section {
+    width: 30vw;
+    height: fit-content;
+    border: 2px solid $black-border;
+    background-color: $grey-color;
+    border-radius: 2rem;
+    .transaction-filter-header {
+        display: flex;
+        padding: 1rem 2rem 0.5rem 2rem;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        border-bottom: 2px solid $black-border;
+        .transaction-filter-tag {
+            font-weight: 400;
+        }
+        .transaction-filter-clear {
+            font-size: 1.3rem;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: $blue-color;
+            cursor: pointer;
+        }
+    }
+    .transaction-filter-search {
+        padding: 1rem 2rem;
+        border-bottom: 2px solid $black-border;
+        .transaction-filter-search-input {
+            font-size: 1.3rem;
+            border-radius: 8px;
+            padding-left: 1rem;
+        }
+    }
+    .transaction-filter-date-container {
+        padding: 1rem 2rem;
+        font-size: 1.3rem;
+        border-bottom: 2px solid $black-border;
+        .transaction-filter-date-label {
+            margin: auto;
+        }
+        .transaction-filter-date-input {
+            font-size: small;
+            margin-right: 1rem;
+            padding: 0.3rem 0;
+        }
+    }
+    .transaction-filter-status-container {
+        padding: 1rem 2rem;
+        border-bottom: 2px solid $black-border;
+        font-size: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        .transaction-filter-status-checkbox {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 1rem;
+        }
+    }
+    .transaction-filter-company {
+        padding: 1rem 2rem;
+        font-size: 1.3rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        .transaction-filter-company-checkbox {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 1rem;
+        }
+    }
+}

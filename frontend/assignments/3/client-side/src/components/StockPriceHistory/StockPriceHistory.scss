@@ -1,0 +1,75 @@
+$blue-color: #1871c2;
+$pos-dark: #2f9e44;
+$pos-light: #b2f2bb;
+$neg-dark: #e03131;
+$neg-light: #ffc9c9;
+
+.history-section {
+    width: 35%;
+    height: 81vh;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+
+    .personal-transaction {
+        border: 1px solid black;
+        height: 47%;
+        margin-bottom: 2rem;
+        border-radius: 1rem;
+        .history-tag {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+    }
+
+    .transaction {
+        border: 1px solid black;
+        margin: 0.5rem 1rem;
+        display: flex;
+        .transaction-info {
+            width: 80%;
+            padding: 0.5rem 1rem;
+            h2 {
+                line-height: 2rem;
+                font-size: 1.3rem;
+            }
+        }
+        .transaction-type {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            h1 {
+                padding: auto 0;
+            }
+            .buy {
+                color: $pos-dark;
+            }
+            .sell {
+                color: $neg-dark;
+            }
+        }
+    }
+    .all-transaction {
+        margin: 1rem;
+    }
+    .transaction-detail {
+        font-size: 1.5rem;
+    }
+    .all-transactions {
+        height: 48%;
+        border: 1px solid black;
+        border-radius: 1rem;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    .no-transaction-tag {
+        font-size: 1.5rem;
+        margin: 1rem;
+    }
+    .user-transactions {
+        height: 15rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
