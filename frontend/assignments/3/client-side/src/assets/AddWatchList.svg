@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="52" height="52"><symbol id="image-9062280ce1bc466405a8759c5b5156efb76c8ecc"><image width="100%" height="100%" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA6hJREFUWEe1V0tsE1cUPXfGE2NiJ1kEGqpS7BD1k4BwxSddtWoWrRSx6iJNkUAqlHwIdBGEAKGWzwKCVKEKyU6TqC1sqIQQC6RG6kdtNyWhICGUj6iayEAFURKIKLYTYnvmwpvYluPYnuc4mZWtOfecc++77857BMnnze8mXdHnju1MXAfwJoDcAMri4U8BCoD4DgO/24ue//TPnlVBGWqyAq3rCq9RdeMrBnYBWGmFj7+fBnBJYePsaFvpSK6YrAZeO8cOzR46CqJ2gIslhdNhUQKdU2LFx0e+oNlMHBkNrPf9X2UoylUwNi5SeF4YA9dJo48De53j6XwLDLh9IS8R/wxg9VKIp3D8pxDqR1tdg6m88wyYmZPy1zKIJzQfQKNtqZVIGnD/wCtoJtQHwLvEmc+nY/SpuvODRE8kDXh8wVMgfLms4nFyZuq41+Y8Kv6aBsRWU3T+t4Buz9d3RFX16pHmslHTQKU/2MlAS74sBeEJPYFWVxNVnX9SotuKxvIYMlK6O2tUuEsJ39zSEYxwhhgKO3i6gip9oU+Z+JIUqyToSK0Nn21UTfTp/hguDuqZIwmfkMcf7AHwuSS3JSxVfCYGNF6L4O5UpgqYVN3k8T/7G6CtlswSgINbVTRtsplIId76axR9D41ckf2iApMAynOh1roIFU7CzbHsZOmZt/wSRf+jnOJCckIYEB+JomwGSu2EPxo1FGuE7wd0nL0RWwA9XGvD7viai8wlxQXPrKWBEjvhz7gBEZFuogDxpAHLJdhSoaDnIxtWanOD88KAjjM3YmjfoqLZm9eap1dPLIFcE777qoJvP9TgmNPD0GNGTfmcoTzLnmqinzydwW4w9ko0OdIrkUe3Z6QnRhe5O4ONxPhRxoDApJqQ3Gq5qBuo2jfhnCGHGMVOWRPvrFbQ8JaCy3cN3J6w3GpZaOOjWLxd6mkomUh3YJ+r2eyi+EloGIAmGVwobNbQ9bfvHygLJA8klf5QB4MPF8osGX86sM91TGCTBjZ3sTZlhH4D4z1JkkXBxAnZFnPWLTiSmb3QE3oFUb4JYO2i2K2Dsh9KE7HrO4MbDEbvMph4oBqoH9nvGkr1mfFi8kbXs/KoTlcAvG+dlDUir4tJgq7qPNtjavgEEbfn+lpayEdezpevHeXOk8MNJH4veCwvp6/7n1aqpB4B0448Ts0hcTk1dL1DbLVcJi0NJILNiak46slAHRN5AfakX88JfFtcz6fD4d7xQxVh68UBXgAK4mlrCJtyQgAAAABJRU5ErkJggg=="></image></symbol>
+  <!-- svg-source:excalidraw -->
+
+  <defs>
+    <style class="style-fonts">
+      @font-face {
+        font-family: "Virgil";
+        src: url("https://excalidraw.com/Virgil.woff2");
+      }
+      @font-face {
+        font-family: "Cascadia";
+        src: url("https://excalidraw.com/Cascadia.woff2");
+      }
+      @font-face {
+        font-family: "Assistant";
+        src: url("https://excalidraw.com/Assistant-Regular.woff2");
+      }
+    </style>
+
+  </defs>
+  <rect x="0" y="0" width="52" height="52" fill="#ffffff"></rect><g transform="translate(10 10) rotate(0 16 16)"><use href="#image-9062280ce1bc466405a8759c5b5156efb76c8ecc" width="32" height="32" opacity="1"></use></g></svg>
