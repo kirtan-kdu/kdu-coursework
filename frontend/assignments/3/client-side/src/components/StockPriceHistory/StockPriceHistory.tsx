@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { socket } from "../../Socket";
-import "./StockPriceHistory.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/StockMarketStore";
+import { createUseStyles } from "react-jss";
+import styles from "./StockPriceHistoryStyles";
 
 interface ITransaction {
     name: string;
@@ -12,6 +13,8 @@ interface ITransaction {
     type: string;
 }
 const StockPriceHistory = () => {
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
     const [transactionHistory, setTransactionHistory] = useState<
         ITransaction[]
     >([]);
@@ -31,7 +34,7 @@ const StockPriceHistory = () => {
     });
 
     return (
-        <section className='history-section'>
+        <section className={classes.historySection}>
             <div className='personal-transaction'>
                 <h1 className='history-tag'>History</h1>
                 <div className='user-transactions'>

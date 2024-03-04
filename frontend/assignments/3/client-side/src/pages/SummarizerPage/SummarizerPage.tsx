@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../../redux/StockMarketStore";
 import { getTransactionSummaryThunk } from "../../redux/thunks/TransactionSummaryThunk";
 import { setProfitSummary } from "../../redux/slices/SummarizerSlice";
-import "./SummarizerPage.scss";
+import { createUseStyles } from "react-jss";
+import styles from "./SummarizerPageStyles";
 
 const SummarizerPage = () => {
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
     const [isLoading, setIsLoading] = useState(false);
     const [dataFetched, setDataFetched] = useState(false);
 
@@ -44,11 +47,11 @@ const SummarizerPage = () => {
     return (
         <div>
             {isLoading ? (
-                <div className='loader-wrapper'>
+                <div className={classes.loaderWrapper}>
                     <div className='loader'></div>
                 </div>
             ) : (
-                <div className='profit-summary-container'>
+                <div className={classes.profitSummaryContainer}>
                     {profitSummary.map((transactoinProfit) => {
                         return (
                             <div

@@ -1,14 +1,17 @@
 import { useState } from "react";
-import "./DashboardPage.scss";
-import DashboardTable from "../../components/DashboardTable/DashboardTable";
+import DashboardTable from "../../components/DashboardTable/DashboardTable.tsx";
+import { createUseStyles } from "react-jss";
+import styles from "./DashboardPageStyles.ts";
 
 const DashboardPage = () => {
-    const [currentActiveTab, setCurrentActiveTab] = useState("explore");
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
+    const [currentActiveTab, setCurrentActiveTab] = useState<string>("explore");
 
     const onTabChangeHandler = (tabName: string) =>
         setCurrentActiveTab(tabName);
     return (
-        <div className='dashboard-container'>
+        <div className={classes.dashboardContainer}>
             <section className='dashboard-tabs-container'>
                 <button
                     className={`dashboard-tabs-btn ${
@@ -29,7 +32,7 @@ const DashboardPage = () => {
                     My WatchList
                 </button>
             </section>
-            <DashboardTable />
+            <DashboardTable activeTab={currentActiveTab} />
         </div>
     );
 };

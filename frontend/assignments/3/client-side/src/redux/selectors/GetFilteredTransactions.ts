@@ -56,7 +56,6 @@ export const getFilteredTransactions = createSelector(
         const start = startDate ? new Date(startDate) : null;
         const end = endDate ? new Date(endDate) : null;
 
-        console.log("inside filter: ", companyFilter);
         return transactions
             .filter((group) =>
                 group.transactions.some((transaction) => {
@@ -69,9 +68,9 @@ export const getFilteredTransactions = createSelector(
                         (!end || transactionDate <= end);
                     const matchesStatus =
                         status === "all" || transaction.status === status;
-                    const matchesCompanyName = companyFilter.length === 0 || companyFilter.includes(
-                        transaction.stock_name
-                    );
+                    const matchesCompanyName =
+                        companyFilter.length === 0 ||
+                        companyFilter.includes(transaction.stock_name);
                     return (
                         matchesStockName &&
                         withinDateRange &&
@@ -92,9 +91,9 @@ export const getFilteredTransactions = createSelector(
                         (!end || transactionDate <= end);
                     const matchesStatus =
                         status === "all" || transaction.status === status;
-                    const matchesCompanyName = companyFilter.length === 0 || companyFilter.includes(
-                        transaction.stock_name
-                    );
+                    const matchesCompanyName =
+                        companyFilter.length === 0 ||
+                        companyFilter.includes(transaction.stock_name);
                     return (
                         matchesStockName &&
                         withinDateRange &&

@@ -1,10 +1,13 @@
+import { createUseStyles } from "react-jss";
 import StockPriceGraph from "../../components/StockPriceGraph/StockPriceGraph";
 import StockPriceHistory from "../../components/StockPriceHistory/StockPriceHistory";
-import "./StockPage.scss";
+import styles from "./StockPage";
 
 const StockPage = () => {
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
     return (
-        <section className='main-container'>
+        <section className={classes.mainContainer}>
             <StockPriceGraph />
             <StockPriceHistory />
         </section>

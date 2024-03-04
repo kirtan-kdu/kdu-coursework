@@ -37,7 +37,7 @@ io.on("connection",(socket)=>{
             const price = Math.floor((Math.random() * 500) + 1);
             io.to(payload).emit(payload, price)
             console.log("New price sent: " + price + " to " + payload);
-        }, 2000);
+        }, 1000);
     })
 
 

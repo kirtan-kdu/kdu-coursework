@@ -1,7 +1,5 @@
 import BarGraph from "./BarGraph";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import "./StockPriceGraph.scss";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { socket } from "../../Socket";
 import React, { useEffect, useState } from "react";
@@ -9,15 +7,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../../redux/StockMarketStore";
 import { Link, useParams } from "react-router-dom";
 import { getUniqueCompaniesThunk } from "../../redux/thunks/UniqueCompaniesThunk";
+import { Alert, Snackbar } from "@mui/material";
+import { addTransaction } from "../../redux/slices/TransactionListSlice";
+import { createUseStyles } from "react-jss";
+import styles from "./StockPriceGraphStyles";
 
+interface QueryParams {
+    stockName: string;
+}
 const StockPriceGraph = () => {
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
     const [quantity, setQuantity] = useState("");
 
-    const { stockName } = useParams();
+    const { stockName } = useParams<QueryParams>();
 
     const uniqueCompanylist = useSelector(
         (state: RootState) => state.uniqueCompaniesReducer.uniqueCompanies
     );
+
+    const reduxDispatch: DispatchType = useDispatch();
 
     const name = useSelector((state: RootState) => state.stockListReducer.name);
     const onQuantityChangeHandler = (
@@ -27,6 +36,10 @@ const StockPriceGraph = () => {
     };
     const handleTransaction = (transactionType: string) => {
         if (quantity === "") return;
+        if (+quantity > 10000) {
+            setOpen(true);
+            return;
+        }
 
         socket.emit("new-transaction", {
             type: transactionType,
@@ -36,18 +49,49 @@ const StockPriceGraph = () => {
             time: new Date(Date.now()),
         });
 
+        reduxDispatch(
+            addTransaction({
+                stock_name: stockName!,
+                stock_symbol: stockName!.substring(0, 3)!.toUpperCase(),
+                transaction_price: +quantity,
+                timestamp: new Date(Date.now()).toISOString(),
+                status: "Passed",
+            })
+        );
+
         setQuantity("");
     };
-
-    const reduxDispatch: DispatchType = useDispatch();
 
     useEffect(() => {
         socket.emit("get-price", stockName);
         reduxDispatch(getUniqueCompaniesThunk());
     }, [reduxDispatch, stockName]);
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
-        <section className='stock-price-graph-container'>
+        <section className={classes.stockPriceGraphContainer}>
+            <Snackbar
+                open={open}
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                }}
+                autoHideDuration={3000}
+                onClose={handleClose}
+            >
+                <Alert
+                    severity={"error"}
+                    variant='filled'
+                    sx={{ width: "200%", fontSize: "20px" }}
+                >
+                    {"You do not have sufficient balance!"}
+                </Alert>
+            </Snackbar>
             <div className='company-info'>
                 <DropdownButton
                     id='dropdown-basic-button'

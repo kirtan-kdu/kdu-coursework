@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./PortfolioFilter.scss";
 import React, { useEffect } from "react";
 import {
     addCompanyFilter,
@@ -13,8 +12,12 @@ import {
 } from "../../redux/slices/FilterParamsSlice";
 import { DispatchType, RootState } from "../../redux/StockMarketStore";
 import { getUniqueCompaniesThunk } from "../../redux/thunks/UniqueCompaniesThunk";
+import { createUseStyles } from "react-jss";
+import styles from "./PortfolioFilterStyles";
 
 const PortfolioFilter = () => {
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
     const { searchString, companyFilter, status, startDate, endDate } =
         useSelector((state: RootState) => state.filterParamsReducer);
 
@@ -39,7 +42,6 @@ const PortfolioFilter = () => {
                 reduxDispatch(setEndDate(event.target.value));
                 break;
             case "passed":
-                console.log("came in switch-case");
                 reduxDispatch(
                     event.target.checked
                         ? addStatus("Passed")
@@ -54,7 +56,6 @@ const PortfolioFilter = () => {
                 );
                 break;
             default:
-                console.log("came inside default");
                 break;
         }
     };
@@ -78,7 +79,7 @@ const PortfolioFilter = () => {
         reduxDispatch(getUniqueCompaniesThunk());
     }, [reduxDispatch]);
     return (
-        <section className='transaction-filter-section'>
+        <section className={classes.transactionFilterSection}>
             <div className='transaction-filter-header'>
                 <h1 className='transaction-filter-tag'>Filters</h1>
                 <button
@@ -132,7 +133,7 @@ const PortfolioFilter = () => {
                 <div>
                     {" "}
                     <input
-                        checked={status === "Passed"}
+                        checked={status === "Passed" || status === "all"}
                         onChange={(event) => handleInputChange(event, "passed")}
                         className='transaction-filter-status-checkbox'
                         aria-label='transaction-status'
@@ -143,7 +144,7 @@ const PortfolioFilter = () => {
                 </div>
                 <div>
                     <input
-                        checked={status === "Failed"}
+                        checked={status === "Failed" || status === "all"}
                         onChange={(event) => handleInputChange(event, "failed")}
                         className='transaction-filter-status-checkbox'
                         aria-label='transaction-status'

@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 import StockMarketLogo from "../../assets/StockMarketLogo.svg";
-import "./Navbar.scss";
+import { createUseStyles } from "react-jss";
+import styles from "./NavbarStyles";
+import { useState } from "react";
 
 const Navbar = () => {
+    const [showHampurgerMenu, setShowHampurgerMenu] = useState(false);
+    const useStyles = createUseStyles(styles);
+    const classes = useStyles();
+    const handleHamburgerChange = () => {
+        setShowHampurgerMenu(!showHampurgerMenu);
+    };
     return (
-        <nav className='navbar-container'>
+        <nav className={classes.navbarContainer}>
             <div className='left-navbar'>
                 <Link to='/'>
                     <img
@@ -16,12 +24,23 @@ const Navbar = () => {
                 <h1 className='logo-text'>KDU Stock Market</h1>
             </div>
             <div className='right-navbar'>
-                <Link className='summarizer-link nav-link' to='/summarizer'>
+                <i className='fa fa-bars' onClick={handleHamburgerChange}></i>
+                <Link
+                    className={`summarizer-link nav-link ${
+                        showHampurgerMenu ? "show-menu" : "disable-menu"
+                    }`}
+                    to='/summarizer'
+                >
                     <div className='summarizer-link-text nav-link-text'>
                         Summarizer
                     </div>
                 </Link>
-                <Link className='my-portfolio-link nav-link' to='/portfolio'>
+                <Link
+                    className={`my-portfolio-link nav-link ${
+                        showHampurgerMenu ? "show-menu" : "disable-menu"
+                    }`}
+                    to='/portfolio'
+                >
                     <div className='mu-portfolio-link-text nav-link-text'>
                         My Portfolio
                     </div>
