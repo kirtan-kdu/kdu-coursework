@@ -1,14 +1,16 @@
+package cryptotradingplatform;
+
 public class Coin {
     private int rank;
-    private String name;
-    private String symbol;
+    private String coinName;
+    private String coinSymbol;
     private double price;
     private long supply;
 
     public Coin(int rank, String name, String symbol, double price, long supply) {
         this.rank = rank;
-        this.name = name;
-        this.symbol = symbol;
+        this.coinName = name;
+        this.coinSymbol = symbol;
         this.price = price;
         this.supply = supply;
     }
@@ -21,20 +23,21 @@ public class Coin {
         this.rank = rank;
     }
 
-    public String getName() {
-        return name;
+
+    public String getCoinName() {
+        return coinName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCoinName(String coinName) {
+        this.coinName = coinName;
     }
 
-    public String getSymbol() {
-        return symbol;
+    public String getCoinSymbol() {
+        return coinSymbol;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public void setCoinSymbol(String coinSymbol) {
+        this.coinSymbol = coinSymbol;
     }
 
     public double getPrice() {
